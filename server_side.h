@@ -9,7 +9,6 @@
 
 namespace server_side
 {
-
     struct ClientHandler
     {
         virtual void handle(std::istream &in, std::ostream &out) = 0;

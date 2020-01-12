@@ -6,10 +6,10 @@
 #define SEARCHINGALGOSERVER_SOLVER_H
 
 
-template<typename Problem, typename Solution> class Solver {
-    
-public:
-    virtual Solution* solve(Problem*) = 0;
+template<typename Problem, typename Solution>
+struct Solver
+{
+    virtual Solution *solve(Problem *) = 0;
 };
 
 

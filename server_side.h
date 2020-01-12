@@ -10,14 +10,14 @@
 namespace server_side
 {
 
-    class ClientHandler
+    struct ClientHandler
     {
-        virtual void handle(std::istream &in, std::ostream &out) = 0; // todo by ref or by value?
+        virtual void handle(std::istream &in, std::ostream &out) = 0;
     };
 
-    class Server
+    struct Server
     {
-        virtual void start(int port, ClientHandler clientHandler) = 0;
+        virtual void start(int port, ClientHandler *clientHandler) = 0;
 
         virtual void stop() = 0;
     };

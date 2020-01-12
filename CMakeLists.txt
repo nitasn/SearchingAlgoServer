@@ -9,4 +9,9 @@ include_directories(.)
 add_executable(
         SearchingAlgoServer
         main.cpp
-        server_side.h CacheManager.h MySerialServer.h MySerialServer.cpp)
+        server_side.h
+        CacheManager.h
+        MySerialServer.h
+        MySerialServer.cpp
+        Solver.h
+)

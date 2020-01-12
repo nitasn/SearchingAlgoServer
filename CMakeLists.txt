@@ -14,6 +14,8 @@ add_executable(
         MySerialServer.h
         MySerialServer.cpp
         Solver.h
+        StringReverser.cpp
+        StringReverser.h
         FileCacheManager.cpp
         FileCacheManager.h
 )

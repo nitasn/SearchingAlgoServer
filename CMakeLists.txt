@@ -18,4 +18,6 @@ add_executable(
         StringReverser.h
         FileCacheManager.cpp
         FileCacheManager.h
+        FileCacheManager.cpp
+        FileCacheManager.h
 )

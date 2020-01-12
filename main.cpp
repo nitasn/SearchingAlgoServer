@@ -6,7 +6,10 @@
 
 using namespace std;
 
+
 int main()
 {
-    cout << "it works" << endl;
+
+    cout << "it works" <<  endl;
+
 }

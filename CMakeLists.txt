@@ -9,4 +9,4 @@ include_directories(.)
 add_executable(
         SearchingAlgoServer
         main.cpp
-)
+        server_side.h)

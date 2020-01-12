@@ -7,7 +7,6 @@
 
 #include <string>
 #include "Solver.h"
-#include "string.h"
 
 
 class StringReverser: public  SolverProblem::Solver<std::string, std::string>{

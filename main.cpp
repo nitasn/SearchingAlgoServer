@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+//todo think
 int main()
 {
 

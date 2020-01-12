@@ -2,6 +2,7 @@
   <dictionary name="nitsan">
     <words>
       <w>cachemanager</w>
+      <w>filecachemanager</w>
       <w>hanoch</w>
       <w>myserialserver</w>
       <w>nitsan</w>

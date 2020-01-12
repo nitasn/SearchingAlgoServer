@@ -5,16 +5,21 @@
 #ifndef SEARCHINGALGOSERVER_FILECACHEMANAGER_H
 #define SEARCHINGALGOSERVER_FILECACHEMANAGER_H
 
+
 #include "CacheManager.h"
 
-template <typename Problem, typename Solution> class FileCacheManager : CacheManager<Problem, Solution>
+namespace cache_manager
 {
-    void store(Problem *problem, Solution *solution) override;
+    template<typename Problem, typename Solution>
+    class FileCacheManager : public CacheManager<Problem, Solution>
+    {
+        void store(Problem *problem, Solution *solution) override;
 
-    Solution *retrieve(Problem *problem) override;
+        Solution *retrieve(Problem *problem) override;
 
-    bool is_cached(Problem *problem) override;
-};
+        bool is_cached(Problem *problem) override;
+    };
+}
 
 
 #endif //SEARCHINGALGOSERVER_FILECACHEMANAGER_H

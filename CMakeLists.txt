@@ -16,4 +16,6 @@ add_executable(
         Solver.h
         FileCacheManager.cpp
         FileCacheManager.h
+        FileCacheManager.cpp
+        FileCacheManager.h
 )

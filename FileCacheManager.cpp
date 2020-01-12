@@ -4,21 +4,23 @@
 
 #include "FileCacheManager.h"
 
-
-template<typename Problem, typename Solution>
-void FileCacheManager<Problem, Solution>::store(Problem *problem, Solution *solution)
+namespace cache_manager
 {
-    throw "not implemented";
-}
+    template<typename Problem, typename Solution>
+    void FileCacheManager<Problem, Solution>::store(Problem *problem, Solution *solution)
+    {
+        throw "not implemented";
+    }
 
-template<typename Problem, typename Solution>
-Solution *FileCacheManager<Problem, Solution>::retrieve(Problem *problem)
-{
-    throw "not implemented";
-}
+    template<typename Problem, typename Solution>
+    Solution *FileCacheManager<Problem, Solution>::retrieve(Problem *problem)
+    {
+        throw "not implemented";
+    }
 
-template<typename Problem, typename Solution>
-bool FileCacheManager<Problem, Solution>::is_cached(Problem *problem)
-{
-    throw "not implemented";
+    template<typename Problem, typename Solution>
+    bool FileCacheManager<Problem, Solution>::is_cached(Problem *problem)
+    {
+        throw "not implemented";
+    }
 }

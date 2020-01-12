@@ -9,7 +9,7 @@
 
 namespace server_side
 {
-    class MySerialServer : Server
+    class MySerialServer : public Server
     {
         void start(int port, ClientHandler *clientHandler) override;
 

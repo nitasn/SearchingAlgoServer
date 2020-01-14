@@ -6,14 +6,15 @@
 #define SEARCHINGALGOSERVER_MYSERIALSERVER_H
 
 #include <server_side.h>
+#include <sys/socket.h>
 
 namespace server_side
 {
-    class MySerialServer : public Server
+    struct MySerialServer : public Server
     {
         void start(int port, ClientHandler *clientHandler) override;
-
         void stop() override ;
+        ~MySerialServer();
     };
 
     class MyParallelServer : Server

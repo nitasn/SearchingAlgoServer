@@ -2,11 +2,17 @@
 // Created by hodyah on 12/01/2020.
 //
 
-#include "StringReverser.h"
+#include <string>
+#include <sstream>
+#include "Solver.h"
+#include "string.h"
 
-StringReverser::StringReverser(std::string) {
-    throw "not implemented";
-}
-std::string* StringReverser::solve(std::string *) {
-    throw "not implemented";
-}
+class StringReverser: public Solver<std::string, std::string>{
+public:
+    std::string* solve(std::string* inputStream)
+    {
+        std::stringstream stringOfStream;
+
+    }
+
+};

@@ -7,19 +7,22 @@
 
 
 #include "CacheManager.h"
+#include <string>
 
 namespace cache_manager
 {
-    template<typename Problem, typename Solution>
-    class FileCacheManager : public CacheManager<Problem, Solution>
-    {
-        void store(Problem *problem, Solution *solution) override;
+    class FileCacheManager : public CacheManager<std::string, std::string> {
 
-        Solution *retrieve(Problem *problem) override;
+        class notSeeccsedOpenTheFile: public std::exception{};
 
-        bool is_cached(Problem *problem) override;
+        void store(std::string &problem, std::string &solution) override;
+
+        std::string retrieve(std::string &problem) override;
+
+        bool is_cached(std::string &problem) override;
     };
 }
+
 
 
 #endif //SEARCHINGALGOSERVER_FILECACHEMANAGER_H

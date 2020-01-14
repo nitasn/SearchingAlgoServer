@@ -12,7 +12,7 @@
 namespace cache_manager
 {
     class FileCacheManager : public CacheManager<std::string, std::string> {
-
+    public:
         class notSeeccsedOpenTheFile: public std::exception{};
 
         void store(std::string &problem, std::string &solution) override;

@@ -18,7 +18,7 @@ namespace cache_manager
     }
 
     template<typename Problem, typename Solution>
-    Solution FileCacheManage::retrieve(string &problem)
+    Solution retrieve(Problem &problem)
     {
         vector<string> optionalFilesOfHaseProblem = ls::get_filenames(getTyped(problem) + "#" + getHase(problem) + "#*", "*.cpp");
         vector<string>::iterator it = optionalFilesOfHaseProblem.begin();
@@ -36,7 +36,7 @@ namespace cache_manager
 //            file.close();
             fstream fileOfProblem;
             fileOfProblem.open(*it, ios::binary);
-            if (!fileOfProblem){throw notSeeccsedOpenTheFile();}
+            if (!fileOfProblem){throw cache_manager::FileCacheManager::notSeeccsedOpenTheFile();}
             char *bufferSize = nullptr,  *bufferProblem = nullptr;
             string ()
             while (problem)
@@ -48,7 +48,7 @@ namespace cache_manager
     }
 
     template<typename Problem, typename Solution>
-    bool FileCacheManager<Problem, Solution>::is_cached(Problem *problem)
+    bool is_cached(Problem &problem)
     {
         throw "not implemented";
     }

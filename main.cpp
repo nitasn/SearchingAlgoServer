@@ -79,74 +79,71 @@ using namespace std;
 struct Node
 {
     char name;
-    list<Node> neighbors;
+
+    list<Node *> neighbors;
 
     explicit Node(char name) : name(name) {}
 
-    bool operator< (Node& b)
+    bool operator<(const Node *other)
     {
-        return name < b.name;
+        return this->name < other->name;;
     }
 
-    friend bool operator< (Node& a, Node& b);
-
-    friend bool operator==(const Node& lhs, const Node& rhs);
+    bool operator==(const Node *other)
+    {
+        return this->name == other->name;;
+    }
 };
-
-bool operator<(Node &a, Node &b)
-{
-    return a.name < b.name;
-}
-
-bool operator==(const Node &lhs, const Node &rhs)
-{
-    return lhs.name == rhs.name && lhs.neighbors == rhs.neighbors;
-}
-
-bool operator < (Node const& lhs, Node const& rhs)
-{
-    return lhs.name < rhs.name;
-}
 
 std::ostream& operator<<(std::ostream &os, const Node &node) {
     return os << "[" << node.name << "]";
 }
 
-class Graph : public Searchable<Node>
-{
-    Node A = Node('A'), B = Node('B'), C = Node('C'), D = Node('D'), E = Node('E'), F = Node('F');
 
+Node A('A');
+Node B('B');
+Node C('C');
+Node D('D');
+Node E('E');
+Node F('F');
+
+
+class Graph : public Searchable<Node *>
+{
 public:
+
+    Node *start = nullptr, *goal = nullptr;
+
     Graph()
     {
-        A.neighbors.push_back(E);
-        A.neighbors.push_back(B);
-        A.neighbors.push_back(C);
+        A.neighbors.push_back(&E);
+        A.neighbors.push_back(&B);
+        A.neighbors.push_back(&C);
 
-        B.neighbors.push_back(C);
-        B.neighbors.push_back(E);
+        B.neighbors.push_back(&C);
+        B.neighbors.push_back(&E);
 
-        C.neighbors.push_back(D);
-        C.neighbors.push_back(F);
+        C.neighbors.push_back(&D);
+        C.neighbors.push_back(&F);
 
-        E.neighbors.push_back(D);
+        E.neighbors.push_back(&D);
 
-        F.neighbors.push_back(E);
+        F.neighbors.push_back(&E);
     }
 
-    Node getStart() override
+    Node *getStart() override
     {
-        return A;
+        return start;
     }
 
-    Node getGoal() override
+    Node *getGoal() override
     {
-        return F;
+        return goal;
     }
 
-    std::list<Node> getNeighbors(Node node) override
+    std::list<Node *> getNeighbors(Node *node) override
     {
-        return node.neighbors;
+        return node->neighbors;
     }
 };
 
@@ -156,12 +153,22 @@ int main()
 {
     auto *graph = new Graph;
 
-    algorithmDFS<Node> dfs(graph);
+    graph->start = &B;
+    graph->goal = &D;
 
-    std::list<Node> path = *dfs.findTheAnswer();
+    algorithmDFS<Node *> dfs(graph);
 
-    for (Node &node : path)
-        cout << node << " ";
+    list<Node *> *path = dfs.findTheAnswer();
+
+    if (path == nullptr)
+    {
+        cout << "no path found";
+    }
+    else
+    {
+        for (Node *node : *path)
+            cout << *node << " ";
+    }
 
     cout << endl;
 }

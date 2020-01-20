@@ -52,13 +52,20 @@ int main()
 //    at.start(5402, b);
 //    cout << "hi" << endl;
     std::vector<std::string> a = {
-            "-1, 4, 543, 3232\r\n",
+            "-1, 1, 543, 3232\r\n",
+            "1, 2, 543, 3232\r\n",
+            "1, 3, 543, 32\r\n",
             "1, 4, 543, 3232\r\n",
-            "1, 4, 543, 32\r\n",
-            "1, 4323, 543, 3232\r\n",
-            "1, 4, 543, 3232\r\n"
+            "1, 5, 543, 3232\r\n",
+            "0, 0\r\n",
+            "3, 3\r\n"
     };
     matrixSearchable b(a);
+    std::list<coords> nei =  b.getNeighbors(b.getStart());
+    for (auto nei : b.getNeighbors(b.getStart()))
+    {
+        cout << nei.i << " " << nei.j << endl;
+    }
 /**    //test for read file cachMannger
    ofstream a;
     a.open("/home/hodyah/CLionProjects/SearchingAlgoServer/testFile.txt", ios::binary);

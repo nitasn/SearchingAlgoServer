@@ -21,7 +21,7 @@ void server_side::serverListenLoop(server_side::Server* self){
             throw notSeccsedAcceptingClient();
         }
 //        while (true){
-        char buffer[SIZE_BUFFER] = {"first"};
+        char buffer[SIZE_BUFFER] = {"start"};
         //todo check what id the assigmnet
         const char *endLisenLinux = "end\r\n";
         const char *endLisenNotLinux = "end\n";

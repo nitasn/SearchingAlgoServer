@@ -21,12 +21,11 @@ class matrixSearchable: public Searchable<coords> {
             std::string* stringOfNum, int *i);
     void findAllValueInLine(std::vector<std::string>::iterator itToStringVector,
             std::string *k, std::string *j);
-    coords first;
+    bool thisIsBlock(int i, int j);
+    coords start;
     coords goal;
 
 public:
-    coords getTheFirst();
-    coords getTheGoal();
     explicit matrixSearchable(std::vector<std::string> stringVector);
     coords getStart() override;
     coords getGoal() override;

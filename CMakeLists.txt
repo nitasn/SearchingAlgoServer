@@ -19,4 +19,4 @@ add_executable(
         FileCacheManager.h
         FileCacheManager.cpp
         FileCacheManager.h
-)
+        MyTestClientHandler.h Searchable.h Searcher.h matrixSearchable.cpp matrixSearchable.h algorithmBFS.cpp algorithmBFS.h MyTestClientHandler.cpp SearcherAbstarct.h)

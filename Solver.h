@@ -7,7 +7,11 @@
 
 
 template<typename Problem, typename Solution> struct Solver {
-    virtual Solution *solve(Problem *) = 0;
+//    virtual Solution *solve(Problem *) = 0;
+    //todo solver - check if semothing in chcah, or solve him
+    //todo need be ganary!!
+//
+    virtual std::vector<Solution>* solve(std::vector<Problem> stringVector) = 0;
 };
 
 

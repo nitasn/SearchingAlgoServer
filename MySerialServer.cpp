@@ -2,42 +2,44 @@
 // Created by Nitsan BenHanoch on 12/01/2020.
 //
 
-#include <thread>
 #include "MySerialServer.h"
-#include <iostream>
-#include <unistd.h>
-#include <sstream>
-#include "string.h"
 
+//todo when need be timeout?
 using namespace std;
-const int MAX_CONNECTIONS = 1;
-const int SIZE_BUFFER = 1024;
 
-void loop(server_side::MySerialServer *self){
+void server_side::serverListenLoop(server_side::Server* self){
+    //todo when this stop?
     while (!self->should_stop){
-        char buffer[SIZE_BUFFER] = {0};
-        int valread = read(self->client_socket , buffer, SIZE_BUFFER);
-        const char *pointerToBuffer = buffer;
+        if (listen(self->socketfd, MAX_CONNECTIONS == -1)) {
+            throw notSeccsedListenToClient();
+        } else{
+            std::cout<<"Server is now listening ..."<<std::endl;
+        }
+        self->client_socket = accept(self->socketfd, (struct sockaddr *) &self->address,
+                                     (socklen_t *) &self->address);
+        if (self->client_socket == -1) {
+            throw notSeccsedAcceptingClient();
+        }
+//        while (true){
+        char buffer[SIZE_BUFFER] = {"first"};
         //todo check what id the assigmnet
         const char *endLisenLinux = "end\r\n";
         const char *endLisenNotLinux = "end\n";
-        if (strcmp(endLisenLinux, pointerToBuffer) == 0 || strcmp(endLisenNotLinux, pointerToBuffer) == 0) {
-            self->should_stop = true;
-        } else {
-            istringstream inStream(string(buffer,SIZE_BUFFER));
-            self->clientHandler->handle(inStream, cout);
+        std::vector<std::string> vectorInputStram;
+//        istringstream inStream(string(buffer,SIZE_BUFFER));
+        //todo this is good? can be end in begging? this is the end?
+        while(strcmp(endLisenLinux, buffer) != 0 && strcmp(endLisenNotLinux, buffer) != 0){
+            memset(buffer, 0, SIZE_BUFFER);
+            int valread = read(self->client_socket , &buffer, SIZE_BUFFER);
+            vectorInputStram.push_back(buffer);
         }
+        self->clientHandler->handle(vectorInputStram);
     }
-}
-
-void server_side::MySerialServer::start(int port, server_side::ClientHandler *clientHandler){
-    this->clientHandler = clientHandler;
-    connectToClient(port, MAX_CONNECTIONS);
-    this->serverThread = new thread(loop, this);
 }
 
 void server_side::MySerialServer::stop(){
     this->should_stop = true;
+    this->serverThread->join();
     delete(this->serverThread);
     cout << "i stop" << endl;
     close(this->socketfd); // closing the listening socket
@@ -45,7 +47,13 @@ void server_side::MySerialServer::stop(){
 }
 
 server_side::MySerialServer::~MySerialServer(){
-    this->serverThread->join();
     stop();
     cout << "i delete" << endl;
 }
+
+void server_side::MySerialServer::start(int port, server_side::ClientHandler *clientHandler) {
+    server_side::Server::playThePort(port, clientHandler);
+    this->serverThread = new thread(server_side::serverListenLoop, this);
+}
+
+

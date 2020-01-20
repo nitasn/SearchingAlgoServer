@@ -29,5 +29,4 @@ add_executable(
         MyTestClientHandler.cpp 
         SearcherAbstarct.h
         algorithmDFS.h
-        algorithmDFS.cpp
 )

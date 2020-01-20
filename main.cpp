@@ -14,7 +14,7 @@
 #include <StringReverser.cpp>
 #include <MySerialServer.h>
 #include <MyTestClientHandler.h>
-
+#include <matrixSearchable.h>
 using namespace std;
 
 
@@ -46,11 +46,19 @@ using namespace std;
 //namespace boot{
 int main()
 {
-    server_side::MySerialServer at = server_side::MySerialServer();
-    Solver *a = new StringReverser;
-    server_side::ClientHandler *b = new MyTestClientHandler(a);
-    at.start(5402, b);
-    cout << "hi" << endl;
+//    server_side::MySerialServer at = server_side::MySerialServer();
+////    Solver *a = new StringReverser;
+//    server_side::ClientHandler *b = new MyTestClientHandler(a);
+//    at.start(5402, b);
+//    cout << "hi" << endl;
+    std::vector<std::string> a = {
+            "-1, 4, 543, 3232\r\n",
+            "1, 4, 543, 3232\r\n",
+            "1, 4, 543, 32\r\n",
+            "1, 4323, 543, 3232\r\n",
+            "1, 4, 543, 3232\r\n"
+    };
+    matrixSearchable b(a);
 /**    //test for read file cachMannger
    ofstream a;
     a.open("/home/hodyah/CLionProjects/SearchingAlgoServer/testFile.txt", ios::binary);

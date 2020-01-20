@@ -17,16 +17,17 @@ class matrixSearchable: public Searchable<coords> {
     int numRows = 0;
     int numColumns = 0;
     void createTheMatrix(std::vector<std::string> stringVector);
-
+    void findValue(std::vector<std::string>::iterator itToStringVector,
+            std::string* stringOfNum, int *i);
+    void findAllValueInLine(std::vector<std::string>::iterator itToStringVector,
+            std::string *k, std::string *j);
     coords first;
     coords goal;
 
 public:
     coords getTheFirst();
     coords getTheGoal();
-
     explicit matrixSearchable(std::vector<std::string> stringVector);
-
     coords getStart() override;
     coords getGoal() override;
     std::list<coords> getNeighbors(coords object) override;

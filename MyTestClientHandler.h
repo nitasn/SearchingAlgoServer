@@ -2,6 +2,9 @@
 // Created by hodyah on 18.1.2020.
 //
 
+#ifndef SEARCHINGALGOSERVER_MyTestClientHandler_H
+#define SEARCHINGALGOSERVER_MyTestClientHandler_H
+
 #include <server_side.h>
 #include <Solver.h>
 
@@ -17,3 +20,5 @@ public:
     void handle(std::vector<std::string> vectorString) override;
     MyTestClientHandler(Solver<std::string, std::string> *solverProblem, int port);
 };
+
+#endif //SEARCHINGALGOSERVER_MyTestClientHandler_H

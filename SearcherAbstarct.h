@@ -1,6 +1,10 @@
 //
 // Created by hodyah on 20.1.2020.
 //
+
+#ifndef SEARCHINGALGOSERVER_SearcherAbstarct_H
+#define SEARCHINGALGOSERVER_SearcherAbstarct_H
+
 #include <Searcher.h>
 #include <queue>
 
@@ -31,3 +35,5 @@ template <typename Problem, typename Solution>
          return this->priorityQueue.size();
      }
 };
+
+#endif //SEARCHINGALGOSERVER_SearcherAbstarct_H

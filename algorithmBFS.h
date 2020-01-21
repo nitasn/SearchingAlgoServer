@@ -44,7 +44,7 @@ public:
                 inQueueFriend(state);
                 this->queueState->pop();
             }
-        return &listState;
+        return nullptr;
     }
 
     void updateTheWay(){

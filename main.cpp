@@ -170,26 +170,28 @@ int not_main()
     return 0;
 }
 
+std::vector<std::string> a = {
+        "1, 2, 3, 4\r\n",
+        " 5, -1, 7, 8\r\n",
+        " 9, 10, 11, 12  \r\n",
+        " 13, 14, 543, 3232\r\n",
+        " 1, 3, 543, 3232\r\n",
+        " 0, 1              \r\n",
+        " 2, 1              \r\n"
+};
+
+
+Searchable<coords> *graph = new matrixSearchable(a);
+
 std::ostream& operator<<(std::ostream &os, const coords &ij) {
-    return os << "(" << ij.first << "," << ij.second << ")";
+    return os << "[" << dynamic_cast<matrixSearchable*>(graph)->matrix[ij.first][ij.second] << "](" << ij.first << "," << ij.second << ")";
 }
 
 int main()
 {
-    std::vector<std::string> a = {
-            "-1, 4,    543, 3232\r\n",
-            " 1, 4,    543, 3232\r\n",
-            " 1, 4,    543, 32  \r\n",
-            " 1, 4323, 543, 3232\r\n",
-            " 1, 4,    543, 3232\r\n",
-            " 1, 1              \r\n",
-            " 2, 2              \r\n"
-    };
 
 
-    Searchable<coords> *graph = new matrixSearchable(a);
-
-    algorithmBFS<coords> dfs(graph);
+    algorithmDFS<coords> dfs(graph);
 
     auto *path = dfs.findTheAnswer();
 

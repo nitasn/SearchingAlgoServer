@@ -19,7 +19,6 @@ void matrixSearchable::createTheMatrix(std::vector<std::string> &stringVector) {
     std::vector<int> rowVector;
     bool thisFirstName = true;
     std::string stringOfNum;
-    //todo
     auto itToEndMatrix = (stringVector.end() - 2);
     std::vector<std::string>::iterator itToStringVector = stringVector.begin();
     for (; itToStringVector != itToEndMatrix; itToStringVector++) {
@@ -30,8 +29,9 @@ void matrixSearchable::createTheMatrix(std::vector<std::string> &stringVector) {
                 rowVector.push_back(stoi(stringOfNum));
                 stringOfNum.clear();
                 if (thisFirstName) { this->numRows++; }
+            }else{
+                ++i;
             }
-            ++i;
         }
         matrix.push_back(rowVector);
         rowVector.clear();

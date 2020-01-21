@@ -19,14 +19,14 @@ class matrixSearchable: public Searchable<coords> {
     int numColumns = 0;
     coords start;
     coords goal;
-    void createTheMatrix(std::vector<std::string> stringVector);
+    void createTheMatrix(std::vector<std::string> &stringVector);
     void findValue(std::vector<std::string>::iterator itToStringVector,
             std::string* stringOfNum, int *i);
     void findAllValueInLine(std::vector<std::string>::iterator itToStringVector,
             std::string *k, std::string *j);
     bool thisIsBlock(int i, int j);
 public:
-    explicit matrixSearchable(std::vector<std::string> stringVector);
+    explicit matrixSearchable(std::vector<std::string> &stringVector);
     coords getStart() override;
     coords getGoal() override;
     std::list<coords> getNeighbors(coords object) override;

@@ -157,11 +157,11 @@ int main()
     graph->start = &B;
     graph->goal = &D;
 
-    algorithmBFS<Node *> dfs(graph);
+    algorithmBFS<Node *> bfs(graph);
 
     cout << "good";
 
-    list<Node *> *path = dfs.findTheAnswer();
+    list<Node *> *path = bfs.findTheAnswer();
 
     if (path == nullptr)
     {

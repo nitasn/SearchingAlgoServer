@@ -9,11 +9,11 @@ using namespace std;
 const int NUM_OF_END_LINE_TO_REMOVE = 2;
 const int INFINITE = -1;
 
-matrixSearchable::matrixSearchable(std::vector<std::string> stringVector) {
+matrixSearchable::matrixSearchable(std::vector<std::string> &stringVector) {
     createTheMatrix(stringVector);
 }
 
-void matrixSearchable::createTheMatrix(std::vector<std::string> stringVector) {
+void matrixSearchable::createTheMatrix(std::vector<std::string> &stringVector) {
     std::vector<int> rowVector;
     bool thisFirstName = true;
     std::string stringOfNum;

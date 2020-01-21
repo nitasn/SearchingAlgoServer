@@ -17,6 +17,7 @@
 #include <matrixSearchable.h>
 #include "Searchable.h"
 #include "algorithmDFS.h"
+#include <algorithmBFS.h>
 
 using namespace std;
 
@@ -156,7 +157,7 @@ int main()
     graph->start = &B;
     graph->goal = &D;
 
-    algorithmDFS<Node *> dfs(graph);
+    algorithmBFS<Node *> dfs(graph);
 
     list<Node *> *path = dfs.findTheAnswer();
 

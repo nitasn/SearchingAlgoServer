@@ -15,7 +15,6 @@ protected:
 public:
     Problem *problem; // todo make protected
     explicit Searcher(Problem *problem) : problem(problem) {};
-
     virtual Solution findTheAnswer() = 0;
 
 //    virtual int howNumObjectIOpen() = 0;

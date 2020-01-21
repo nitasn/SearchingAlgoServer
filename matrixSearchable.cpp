@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <queue>
 #include "matrixSearchable.h"
 using namespace std;
 const int NUM_OF_END_LINE_TO_REMOVE = 2;
@@ -70,20 +71,20 @@ coords matrixSearchable::getGoal(){
 }
 std::list<coords> matrixSearchable::getNeighbors(coords ij){
     std::list<coords> listNeighbors;
-    if ((ij.i != 0) && !thisIsBlock(ij.i - 1, ij.j)){
-        coords up = {(ij.i - 1), (ij.j)};
+    if ((ij.first != 0) && !thisIsBlock(ij.first - 1, ij.second)){
+        coords up = {(ij.first - 1), (ij.second)};
         listNeighbors.push_back(up);
     }
-    if ((ij.i != (this->numColumns -1)) && !thisIsBlock(ij.i + 1, ij.j)){
-        coords down = {(ij.i + 1), (ij.j)};
+    if ((ij.first != (this->numColumns -1)) && !thisIsBlock(ij.first + 1, ij.second)){
+        coords down = {(ij.first + 1), (ij.second)};
         listNeighbors.push_back(down);
     }
-    if ((ij.j != 0) && !thisIsBlock(ij.i, ij.j - 1)){
-        coords left = {(ij.i), (ij.j - 1)};
+    if ((ij.second != 0) && !thisIsBlock(ij.first, ij.second - 1)){
+        coords left = {(ij.first), (ij.second - 1)};
         listNeighbors.push_back(left);
     }
-    if ((ij.j != (this->numColumns -1)) && !thisIsBlock(ij.i, ij.j + 1)){
-        coords right = {(ij.i), (ij.j + 1)};
+    if ((ij.second != (this->numColumns -1)) && !thisIsBlock(ij.first, ij.second + 1)){
+        coords right = {(ij.first), (ij.second + 1)};
         listNeighbors.push_back(right);
     }
     return listNeighbors;

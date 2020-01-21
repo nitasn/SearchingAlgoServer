@@ -23,9 +23,8 @@ add_executable(
         Searchable.h 
         Searcher.h 
         matrixSearchable.cpp 
-        matrixSearchable.h 
-        algorithmBFS.cpp 
-        algorithmBFS.h 
+        matrixSearchable.h
+        algorithmBFS.h
         MyTestClientHandler.cpp 
         SearcherAbstarct.h
         algorithmDFS.h

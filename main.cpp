@@ -2,24 +2,16 @@
 // Created by Nitsan BenHanoch on 12/01/2020.
 //
 
-#include <iostream>
-#include "server_side.h"
-#include "MySerialServer.h"
-#include "FileCacheManager.h"
-#include <string>
-#include <cstring>
-#include <vector>
-#include <fstream>
-#include <FileCacheManager.cpp>
-#include <StringReverser.cpp>
-#include <MySerialServer.h>
-#include <MyTestClientHandler.h>
-#include <matrixSearchable.h>
-#include "Searchable.h"
-#include "algorithmDFS.h"
-#include <algorithmBFS.h>
 
-using namespace std;
+#include <vector>
+
+#include "matrixSearchable.h"
+#include "Searchable.h"
+#include <iostream>
+#include "algorithmDFS.h"
+#include "algorithmBFS.h"
+
+
 
 //string retrieve(string &problem){
 //    vector<string> a;
@@ -76,6 +68,8 @@ using namespace std;
 //    */
 //}
 ////}
+
+using namespace std;
 
 struct Node
 {
@@ -149,19 +143,16 @@ public:
 };
 
 
-
-int main()
+int not_main()
 {
     auto *graph = new Graph;
 
     graph->start = &B;
     graph->goal = &D;
 
-    algorithmBFS<Node*> bfs(graph);
+    algorithmDFS<Node *> dfs(graph);
 
-    cout << "good";
-
-    list<Node *> *path = bfs.findTheAnswer();
+    list<Node *> *path = dfs.findTheAnswer();
 
     if (path == nullptr)
     {
@@ -169,9 +160,50 @@ int main()
     }
     else
     {
+        cout << "path: ";
         for (Node *node : *path)
             cout << *node << " ";
     }
 
     cout << endl;
+
+    return 0;
+}
+
+std::ostream& operator<<(std::ostream &os, const coords &ij) {
+    return os << "(" << ij.first << "," << ij.second << ")";
+}
+
+int main()
+{
+    std::vector<std::string> a = {
+            "-1, 4,    543, 3232\r\n",
+            " 1, 4,    543, 3232\r\n",
+            " 1, 4,    543, 32  \r\n",
+            " 1, 4323, 543, 3232\r\n",
+            " 1, 4,    543, 3232\r\n",
+            " 1, 1              \r\n",
+            " 2, 2              \r\n"
+    };
+
+
+    Searchable<coords> *graph = new matrixSearchable(a);
+
+    algorithmBFS<coords> dfs(graph);
+
+    auto *path = dfs.findTheAnswer();
+
+    if (path == nullptr)
+    {
+        cout << "no path found";
+    }
+    else
+    {
+        for (auto ij : *path)
+            cout << ij << " ";
+    }
+
+    cout << endl;
+
+    return 0;
 }

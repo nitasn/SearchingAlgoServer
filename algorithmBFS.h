@@ -10,13 +10,13 @@
 #include <queue>
 #include "SearcherAbstarct.h"
 #include "matrixSearchable.h"
-#include <unordered_map>
+#include <map>
 
 //using namespace std;
 template <typename State>
 class algorithmBFS: public Searcher<Searchable<State>, std::list<State> *> {
     std::set<State> visited;
-    std::unordered_map<State, State> mapFather = new std::unordered_map<State, State>();
+    std::map<State, State> *mapFather = new std::map<State, State>();
     std::queue<State> *queueState = new std::queue<State>();
     std::list<State> listState;
     Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem;
@@ -24,7 +24,7 @@ class algorithmBFS: public Searcher<Searchable<State>, std::list<State> *> {
         this->queueState->push(state);
         for (auto frined: graph->getNeighbors(state)) {
             this->queueState->push(frined);
-            (mapFather).insert(frined, state);
+            (*mapFather)[frined] = state;
         }
     }
 public:
@@ -35,7 +35,7 @@ public:
 
     std::list<State>* findTheAnswer() override {
         //todo when add to list
-        mapFather.insert(this->graph->getStart(), nullptr);
+        (*mapFather)[this->graph->getStart()] = nullptr;
         inQueueFriend(this->graph->getStart());
         while (!this->queueState->empty()){
             visited.insert(graph->getStart());
@@ -57,10 +57,11 @@ public:
     }
 
     void updateTheWay(){
-        State father = mapFather->at(graph->getGoal());
+        State father = (*mapFather)[graph->getGoal()];
         listState.push_front(graph->getGoal());
         while(father != nullptr){
             listState.push_front(father);
+            father = (*mapFather)[father];
         }
     }
 

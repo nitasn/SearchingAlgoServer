@@ -159,6 +159,8 @@ int main()
 
     algorithmBFS<Node *> dfs(graph);
 
+    cout << "good";
+
     list<Node *> *path = dfs.findTheAnswer();
 
     if (path == nullptr)

@@ -15,42 +15,33 @@
 //using namespace std;
 template <typename State>
 class algorithmBFS: public Searcher<Searchable<State>, std::list<State> *> {
-    std::set<State> visited;
     std::map<State, State> *mapFather = new std::map<State, State>();
     std::queue<State> *queueState = new std::queue<State>();
     std::list<State> listState;
     Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem;
     void inQueueFriend(State state){
-        this->queueState->push(state);
-        for (auto frined: graph->getNeighbors(state)) {
-            this->queueState->push(frined);
-            (*mapFather)[frined] = state;
+        for (auto nighbors: graph->getNeighbors(state)) {
+            if (mapFather->find(nighbors) == mapFather->end()) {
+                this->queueState->push(nighbors);
+                (*mapFather)[nighbors] = state;
+            }
         }
     }
 public:
     explicit algorithmBFS(Searchable<State> *problem):
             Searcher<Searchable<State>, std::list<State> *>(problem) {}
 
-
-
     std::list<State>* findTheAnswer() override {
-        //todo when add to list
         (*mapFather)[this->graph->getStart()] = nullptr;
         inQueueFriend(this->graph->getStart());
         while (!this->queueState->empty()){
-            visited.insert(graph->getStart());
                 State state = this->queueState->front();
                 if (state == graph->getGoal()) {
                     listState.push_back(state);
                     updateTheWay();
                     return &listState;
                 }
-                for (auto nighbors : graph->getNeighbors(state)) {
-                    if (visited.find(nighbors) == visited.end()) {
-                        this->visited.insert(nighbors);
-                        inQueueFriend(nighbors);
-                    }
-                }
+                inQueueFriend(state);
                 this->queueState->pop();
             }
         return &listState;
@@ -58,7 +49,6 @@ public:
 
     void updateTheWay(){
         State father = (*mapFather)[graph->getGoal()];
-        listState.push_front(graph->getGoal());
         while(father != nullptr){
             listState.push_front(father);
             father = (*mapFather)[father];
@@ -67,8 +57,8 @@ public:
 
 
     ~algorithmBFS(){
-//        delete this->queueState;
-//        delete this->mapFather;
+        delete this->queueState;
+        delete this->mapFather;
     }
 };
 

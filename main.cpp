@@ -157,7 +157,7 @@ int main()
     graph->start = &B;
     graph->goal = &D;
 
-    algorithmBFS<Node *> bfs(graph);
+    algorithmBFS<Node*> bfs(graph);
 
     cout << "good";
 

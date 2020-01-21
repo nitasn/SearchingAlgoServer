@@ -32,7 +32,7 @@ public:
             Searcher<Searchable<State>, std::list<State> *>(problem) {}
 
     std::list<State>* findTheAnswer() override {
-        (*mapFather)[this->graph->getStart()] = nullptr;
+//        (*mapFather)[this->graph->getStart()] = nullptr;
         inQueueFriend(this->graph->getStart());
         while (!this->queueState->empty()){
                 State state = this->queueState->front();
@@ -49,10 +49,11 @@ public:
 
     void updateTheWay(){
         State father = (*mapFather)[graph->getGoal()];
-        while(father != nullptr){
+        while(father != this->graph->getStart()){
             listState.push_front(father);
             father = (*mapFather)[father];
         }
+        listState.push_front(this->graph->getStart());
     }
 
 

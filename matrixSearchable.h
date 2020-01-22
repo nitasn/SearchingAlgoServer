@@ -12,15 +12,9 @@
 #include <istream>
 #include <tuple>
 #include "Searchable.h"
-enum {I, J, VALUE, SUM_OF_WAY};
-typedef std::tuple<int, int, int, int> coords;
-//typedef std::pair<int, int> coords;
-struct CompareWayState{
-    //todo this is not good! < not for State!
-    bool operator()(coords s1,coords s2){
-        return get<SUM_OF_WAY>(s1) > get<SUM_OF_WAY>(s2);
-    }
-};
+
+typedef std::pair<int, int> coords;
+
 class matrixSearchable: public Searchable<coords> {
     int numRows = 0;
     int numColumns = 0;
@@ -33,15 +27,12 @@ class matrixSearchable: public Searchable<coords> {
             std::string *k, std::string *j);
     bool thisIsBlock(int i, int j);
 public:
-    int returnValueThe(int i, int j);
+    double getWeight(coords t1, coords t2);
     std::vector<std::vector<int>> matrix; // TODO MAKE PRIVATE
     explicit matrixSearchable(std::vector<std::string> &stringVector);
     coords getStart() override;
     coords getGoal() override;
     std::list<coords> getNeighbors(coords object) override;
-    int getWayNum(coords coordsObj) override ;
-    void addToWayNum(coords coordsObj, int num) override;
-    int getValueOfState(coords coordsObj) override;
 };
 
 #endif //SEARCHINGALGOSERVER_MATRIXSEARCHABLE_H

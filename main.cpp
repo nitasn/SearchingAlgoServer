@@ -192,7 +192,7 @@ int main()
 {
 
 
-    algorithmBestFirstSearch<coords> dfs(graph);
+    algorithmDFS<coords> dfs(graph);
 
     auto *path = dfs.findTheAnswer();
 

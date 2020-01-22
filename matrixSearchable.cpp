@@ -40,11 +40,11 @@ void matrixSearchable::createTheMatrix(std::vector<std::string> &stringVector) {
     }
     string k, j;
     findAllValueInLine(itToStringVector, &k, &j);
-    this->start = {stoi(j), stoi(k)};
+    this->start = {stoi(j), stoi(k), returnValueThe(stoi(j),stoi(k)), 0};
     k.clear();
     j.clear();
     findAllValueInLine(++itToStringVector, &k, &j);
-    this->goal = {stoi(j),stoi(k)};
+    this->goal = {stoi(j),stoi(k), returnValueThe(stoi(j),stoi(k)), 0};
 }
 
 void  matrixSearchable::findValue(vector<string>::iterator itToStringVector, string* stringOfNum, int *i){
@@ -73,29 +73,54 @@ coords matrixSearchable::getGoal(){
 }
 std::list<coords> matrixSearchable::getNeighbors(coords ij){
     std::list<coords> listNeighbors;
-    if ((ij.first != 0) && !thisIsBlock(ij.first - 1, ij.second)){
-        coords up = {(ij.first - 1), (ij.second)};
+
+    if ((get<I>(ij) != 0) && !thisIsBlock(get<I>(ij) - 1, get<J>(ij))){
+        int iUp = (get<I>(ij) - 1),jUp = (get<J>(ij));
+        coords up = { iUp, jUp, returnValueThe(iUp, jUp), 0};
         listNeighbors.push_back(up);
     }
-    if ((ij.first != (this->numColumns -1)) && !thisIsBlock(ij.first + 1, ij.second)){
-        coords down = {(ij.first + 1), (ij.second)};
+    if ((get<I>(ij) != (this->numColumns - 1)) && !thisIsBlock(get<I>(ij) + 1, get<J>(ij))){
+        int iDown = (get<I>(ij) + 1),jDown = (get<J>(ij));
+        coords down = { iDown, jDown, returnValueThe(iDown, jDown), 0};
         listNeighbors.push_back(down);
     }
-    if ((ij.second != 0) && !thisIsBlock(ij.first, ij.second - 1)){
-        coords left = {(ij.first), (ij.second - 1)};
+    if ((get<J>(ij) != 0) && !thisIsBlock(get<I>(ij), get<J>(ij) - 1)){
+        int iLeft = (get<I>(ij)), jLeft = (get<J>(ij) - 1);
+        coords left = {iLeft, jLeft, returnValueThe(iLeft, jLeft), 0};
         listNeighbors.push_back(left);
     }
-    if ((ij.second != (this->numColumns -1)) && !thisIsBlock(ij.first, ij.second + 1)){
-        coords right = {(ij.first), (ij.second + 1)};
+    if ((get<J>(ij) != (this->numColumns - 1)) && !thisIsBlock(get<I>(ij), get<J>(ij) + 1)){
+        int iRight = (get<I>(ij)), jRight = (get<J>(ij) + 1);
+        coords right = {iRight, jRight, returnValueThe(iRight, jRight), 0};
         listNeighbors.push_back(right);
     }
     return listNeighbors;
 }
 
 bool matrixSearchable::thisIsBlock(int i, int j){
+    auto itToVector = this->matrix.begin();
+    itToVector += i;
+    auto itToNum = itToVector->begin();
+    itToNum += j;
+    return *itToNum == INFINITE;
+}
+
+int matrixSearchable::returnValueThe(int i, int j){
     std::vector<std::vector<int>>::iterator itToVector = this->matrix.begin();
     itToVector += i;
     std::vector<int>::iterator itToNum = itToVector->begin();
     itToNum += j;
-    return *itToNum == INFINITE;
+    return *itToNum;
+}
+
+void matrixSearchable::addToWayNum(coords coordsObj, int num){
+    get<SUM_OF_WAY>(coordsObj) += num;
+}
+
+int matrixSearchable::getWayNum(coords coordsObj){
+    return get<SUM_OF_WAY>(coordsObj);
+}
+
+int matrixSearchable::getValueOfState(coords coordsObj){
+    return get<VALUE>(coordsObj);
 }

@@ -10,6 +10,7 @@
 #include <iostream>
 #include "algorithmDFS.h"
 #include "algorithmBFS.h"
+#include <algorithmBestFirstSearch.h>
 
 
 
@@ -143,32 +144,32 @@ public:
 };
 
 
-int not_main()
-{
-    auto *graph = new Graph;
-
-    graph->start = &B;
-    graph->goal = &D;
-
-    algorithmDFS<Node *> dfs(graph);
-
-    list<Node *> *path = dfs.findTheAnswer();
-
-    if (path == nullptr)
-    {
-        cout << "no path found";
-    }
-    else
-    {
-        cout << "path: ";
-        for (Node *node : *path)
-            cout << *node << " ";
-    }
-
-    cout << endl;
-
-    return 0;
-}
+//int not_main()
+//{
+//    auto *graph = new Graph;
+//
+//    graph->start = &B;
+//    graph->goal = &D;
+//
+//    algorithmDFS<Node *> dfs(graph);
+//
+//    list<Node *> *path = dfs.findTheAnswer();
+//
+//    if (path == nullptr)
+//    {
+//        cout << "no path found";
+//    }
+//    else
+//    {
+//        cout << "path: ";
+//        for (Node *node : *path)
+//            cout << *node << " ";
+//    }
+//
+//    cout << endl;
+//
+//    return 0;
+//}
 
 std::vector<std::string> a = {
         "1, 2, 3, 4\r\n",
@@ -184,14 +185,14 @@ std::vector<std::string> a = {
 Searchable<coords> *graph = new matrixSearchable(a);
 
 std::ostream& operator<<(std::ostream &os, const coords &ij) {
-    return os << "[" << dynamic_cast<matrixSearchable*>(graph)->matrix[ij.first][ij.second] << "](" << ij.first << "," << ij.second << ")";
+    return os << "[" << dynamic_cast<matrixSearchable*>(graph)->matrix[get<0>(ij)][get<1>(ij)] << "](" << get<0>(ij) << "," << get<1>(ij) << ")";
 }
 
 int main()
 {
 
 
-    algorithmDFS<coords> dfs(graph);
+    algorithmBestFirstSearch<coords> dfs(graph);
 
     auto *path = dfs.findTheAnswer();
 

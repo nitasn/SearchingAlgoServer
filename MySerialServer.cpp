@@ -10,7 +10,7 @@ using namespace std;
 void server_side::serverListenLoop(server_side::Server* self){
     //todo when this stop?
     while (!self->should_stop){
-        if (listen(self->socketfd, MAX_CONNECTIONS == -1)) {
+        if (listen(self->socketfd, MAX_CONNECTIONS == -1)) { // todo should listen be outside the loop?
             throw notSeccsedListenToClient();
         } else{
             std::cout<<"Server is now listening ..."<<std::endl;
@@ -29,11 +29,18 @@ void server_side::serverListenLoop(server_side::Server* self){
 //        istringstream inStream(string(buffer,SIZE_BUFFER));
         //todo this is good? can be end in begging? this is the end?
         while(strcmp(endLisenLinux, buffer) != 0 && strcmp(endLisenNotLinux, buffer) != 0){
-            memset(buffer, 0, SIZE_BUFFER);
-            int valread = read(self->client_socket , &buffer, SIZE_BUFFER);
-            vectorInputStram.push_back(buffer);
+            int msg_size = read(self->client_socket , &buffer, SIZE_BUFFER);
+            std::string data(buffer, msg_size);
+            vectorInputStram.push_back(data);
         }
-        self->clientHandler->handle(vectorInputStram);
+        class notSeccsedSendToClient: public std::exception{};
+        auto sendOver = [&](std::string &str)
+        {
+            if (send(self->client_socket, str.c_str(), str.length(), 0) == -1){
+                throw notSeccsedSendToClient();
+            }
+        };
+        self->clientHandler->handle(vectorInputStram, sendOver);
     }
 }
 
@@ -41,14 +48,14 @@ void server_side::MySerialServer::stop(){
     this->should_stop = true;
     this->serverThread->join();
     delete(this->serverThread);
-    cout << "i stop" << endl;
+    cout << "I stop" << endl;
     close(this->socketfd); // closing the listening socket
     close(this->client_socket);
 }
 
 server_side::MySerialServer::~MySerialServer(){
     stop();
-    cout << "i delete" << endl;
+    cout << "I delete" << endl;
 }
 
 void server_side::MySerialServer::start(int port, server_side::ClientHandler *clientHandler) {

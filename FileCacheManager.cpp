@@ -27,8 +27,8 @@
 //
 //                    const size_t max = strlen(&*str_it);
 //
-//                    for (size_t i = 0; i < max; ++i) {
-//                        if (wild_match(&*(pat_it + 1), &*(str_it + i))) {
+//                    for (size_t I = 0; I < max; ++I) {
+//                        if (wild_match(&*(pat_it + 1), &*(str_it + I))) {
 //                            return true;
 //                        }
 //                    }

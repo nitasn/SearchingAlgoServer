@@ -7,18 +7,18 @@
 
 #include <server_side.h>
 #include <Solver.h>
+#include <functional>
 
 class MyTestClientHandler: public server_side::ClientHandler{
 //    Solver<Problem, Solution> solverProblem;
     Solver<std::string, std::string> *solverProblem;
-    int port;
-    std::vector<std::string>* theProblem;
-    std::vector<std::string>* anser;
-    class notSeccsedSendToClient: public std::exception{};
+    std::vector<std::string>* theProblem{};
+    std::vector<std::string>* anser{};
 public:
-    void sendAnserToClient() override;
-    void handle(std::vector<std::string> vectorString) override;
-    MyTestClientHandler(Solver<std::string, std::string> *solverProblem, int port);
+//    void sendAnserToClient() override;
+    void handle(std::vector<std::string> vectorString,
+            std::function<void(std::string&)> send) override;
+    explicit MyTestClientHandler(Solver<std::string, std::string> *solverProblem);
 };
 
 #endif //SEARCHINGALGOSERVER_MyTestClientHandler_H

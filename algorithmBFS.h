@@ -13,10 +13,12 @@
 #include <map>
 
 //using namespace std;
+
 template <typename State>
 class algorithmBFS: public Searcher<Searchable<State>, std::list<State> *> {
     std::map<State, State> *mapFather = new std::map<State, State>();
     std::queue<State> *queueState = new std::queue<State>();
+
     std::list<State> listState;
     Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem;
     void inQueueFriend(State state){

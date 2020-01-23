@@ -28,4 +28,4 @@ add_executable(
         MyTestClientHandler.cpp 
         SearcherAbstarct.h
         algorithmDFS.h
-        algorithmBestFirstSearch.h)
+        algorithmBestFirstSearch.h log.h algorithmA_star.h)

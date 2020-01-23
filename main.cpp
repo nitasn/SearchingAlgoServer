@@ -10,9 +10,9 @@
 #include <iostream>
 #include "algorithmDFS.h"
 #include "algorithmBFS.h"
-#include <algorithmBestFirstSearch.h>
+#include "algorithmA_star.h"
 
-
+#include "log.h"
 
 //string retrieve(string &problem){
 //    vector<string> a;
@@ -141,43 +141,51 @@ public:
     {
         return node->neighbors;
     }
+
+    double getWeight(Node *t1, Node *t2) override
+    {
+        return 0;
+    }
 };
 
 
-//int not_main()
-//{
-//    auto *graph = new Graph;
-//
-//    graph->start = &B;
-//    graph->goal = &D;
-//
-//    algorithmDFS<Node *> dfs(graph);
-//
-//    list<Node *> *path = dfs.findTheAnswer();
-//
-//    if (path == nullptr)
-//    {
-//        cout << "no path found";
-//    }
-//    else
-//    {
-//        cout << "path: ";
-//        for (Node *node : *path)
-//            cout << *node << " ";
-//    }
-//
-//    cout << endl;
-//
-//    return 0;
-//}
+int not_main()
+{
+    auto *graph = new Graph;
+
+    graph->start = &B;
+    graph->goal = &D;
+
+    algorithmDFS<Node *> dfs(graph);
+
+    list<Node *> *path = dfs.findTheAnswer();
+
+    if (path == nullptr)
+    {
+        cout << "no path found";
+    }
+    else
+    {
+        cout << "path: ";
+        for (Node *node : *path)
+            cout << *node << " ";
+    }
+
+    cout << endl;
+
+    return 0;
+}
 
 std::vector<std::string> a = {
-        "1, 2, 3, 4\r\n",
-        " 5, -1, 7, 8\r\n",
-        " 9, 10, 11, 12  \r\n",
+
+        "1,   2,  3,   4\r\n",
+        " -1, -1,  7,   8\r\n",
+        " 9,  10, -1,  12  \r\n",
         " 13, 14, 543, 3232\r\n",
-        " 1, 3, 543, 3232\r\n",
+        " 19,  3, 543, 3232\r\n",
+
         " 0, 1              \r\n",
+
         " 2, 1              \r\n"
 };
 
@@ -190,9 +198,9 @@ std::ostream& operator<<(std::ostream &os, const coords &ij) {
 
 int main()
 {
+//    log << "ef";
 
-
-    algorithmDFS<coords> dfs(graph);
+    algorithmA_star<coords> dfs(graph);
 
     auto *path = dfs.findTheAnswer();
 

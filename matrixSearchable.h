@@ -27,7 +27,7 @@ class matrixSearchable: public Searchable<coords> {
             std::string *k, std::string *j);
     bool thisIsBlock(int i, int j);
 public:
-    double getWeight(coords t1, coords t2);
+    double getWeight(coords t1, coords t2) override ;
     std::vector<std::vector<int>> matrix; // TODO MAKE PRIVATE
     explicit matrixSearchable(std::vector<std::string> &stringVector);
     coords getStart() override;

@@ -6,7 +6,6 @@
 #define SEARCHINGALGOSERVER_ALGORITHMDFS_H
 
 #include "Searcher.h"
-#include "SearcherAbstarct.h"
 #include <set>
 #include <list>
 

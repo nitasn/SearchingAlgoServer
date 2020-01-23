@@ -6,6 +6,7 @@
 #define SEARCHINGALGOSERVER_SEARCHER_H
 
 #include <Searchable.h>
+#include "Solver.h"
 
 template <typename Problem, typename Solution>
 class Searcher{
@@ -21,4 +22,12 @@ public:
 //    virtual void popPriorityQueue() = 0;
 //    virtual int getPriorityQueueSize() = 0;
 };
+
+//class AO : Solver
+//{
+//    Searcher * searcher;
+//
+//public:
+//
+//};
 #endif //SEARCHINGALGOSERVER_SEARCHER_H

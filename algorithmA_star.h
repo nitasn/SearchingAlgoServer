@@ -24,8 +24,7 @@ class algorithmA_star : public Searcher<State>
     std::multimap<double, State> _costs2states; // states that cost that much (sorted from min cost) used as heap
     std::map<State, typename std::multimap<double, State>::iterator> _heap_iters; // for fast deletion
 
-    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
-    Searchable<State> *graph = Searcher<State>::graph;
+    Searchable<State> *graph;
 
     double heuristic_cost_to_goal(State &s)
     {
@@ -85,8 +84,10 @@ class algorithmA_star : public Searcher<State>
 
 public:
 
-    std::list<State> *findPath() override
+    std::list<State> *findPath(Searchable<State> *_graph) override
     {
+        this->graph = _graph;
+
         State first = graph->getStart();
         cost_until_here[first] = 0;
         insert_or_update(first, heuristic_cost_to_goal(first));
@@ -132,8 +133,6 @@ public:
 
         return path;
     }
-
-    explicit algorithmA_star(Searchable<State> *graph) : Searcher<State>(graph) {}
 };
 
 

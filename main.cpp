@@ -146,43 +146,48 @@ public:
     {
         return 0;
     }
+
+    double getMinimalWeight() override
+    {
+        return 0;
+    }
 };
 
 
-int not_main()
-{
-    auto *graph = new Graph;
-
-    graph->start = &B;
-    graph->goal = &D;
-
-    algorithmDFS<Node *> dfs(graph);
-
-    list<Node *> *path = dfs.findTheAnswer();
-
-    if (path == nullptr)
-    {
-        cout << "no path found";
-    }
-    else
-    {
-        cout << "path: ";
-        for (Node *node : *path)
-            cout << *node << " ";
-    }
-
-    cout << endl;
-
-    return 0;
-}
+//int not_main()
+//{
+//    auto *graph = new Graph;
+//
+//    graph->start = &B;
+//    graph->goal = &D;
+//
+//    algorithmA_star<Node *> dfs(graph);
+//
+//    list<Node *> *path = dfs.findPath();
+//
+//    if (path == nullptr)
+//    {
+//        cout << "no path found";
+//    }
+//    else
+//    {
+//        cout << "path: ";
+//        for (Node *node : *path)
+//            cout << *node << " ";
+//    }
+//
+//    cout << endl;
+//
+//    return 0;
+//}
 
 std::vector<std::string> a = {
 
-        "1,   2,  3,   4\r\n",
-        " -1, -1,  7,   8\r\n",
+        "19,   2,  3,  14  \r\n",
+        " -1, -1,  77,  8  \r\n",
         " 9,  10, -1,  12  \r\n",
         " 13, 14, 543, 3232\r\n",
-        " 19,  3, 543, 3232\r\n",
+        " 1,  1,   1,   1  \r\n",
 
         " 0, 1              \r\n",
 
@@ -193,16 +198,15 @@ std::vector<std::string> a = {
 Searchable<coords> *graph = new matrixSearchable(a);
 
 std::ostream& operator<<(std::ostream &os, const coords &ij) {
-    return os << "[" << dynamic_cast<matrixSearchable*>(graph)->matrix[get<0>(ij)][get<1>(ij)] << "](" << get<0>(ij) << "," << get<1>(ij) << ")";
+    int i = ij.first, j = ij.second;
+    return os << "[" << dynamic_cast<matrixSearchable*>(graph)->matrix[i][j] << "](" << i << "," << j << ")";
 }
 
 int main()
 {
-//    log << "ef";
-
     algorithmA_star<coords> dfs(graph);
 
-    auto *path = dfs.findTheAnswer();
+    auto *path = dfs.findPath();
 
     if (path == nullptr)
     {

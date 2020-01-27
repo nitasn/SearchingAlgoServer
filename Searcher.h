@@ -8,26 +8,18 @@
 #include <Searchable.h>
 #include "Solver.h"
 
-template <typename Problem, typename Solution>
-class Searcher{
 
+template<typename State>
+class Searcher
+{
 protected:
+    Searchable<State> *graph;
 
 public:
-    Problem *problem; // todo make protected
-    explicit Searcher(Problem *problem) : problem(problem) {};
-    virtual Solution findTheAnswer() = 0;
 
-//    virtual int howNumObjectIOpen() = 0;
-//    virtual void popPriorityQueue() = 0;
-//    virtual int getPriorityQueueSize() = 0;
+    explicit Searcher(Searchable<State> *graph) : graph(graph) {};
+
+    virtual std::list<State> *findPath() = 0;
 };
 
-//class AO : Solver
-//{
-//    Searcher * searcher;
-//
-//public:
-//
-//};
 #endif //SEARCHINGALGOSERVER_SEARCHER_H

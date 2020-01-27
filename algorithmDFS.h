@@ -9,11 +9,12 @@
 #include <set>
 #include <list>
 
-template<typename State> class algorithmDFS : public Searcher<Searchable<State>, std::list<State> *>
+template<typename State> class algorithmDFS : public Searcher<State>
 {
     std::set<State> visited;
 
-    Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem; // פשוט שם מקוצר
+    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
+    Searchable<State> *graph = Searcher<State>::graph;
 
     std::list<State> *recursivePathFinder(State state)
     {
@@ -44,10 +45,9 @@ template<typename State> class algorithmDFS : public Searcher<Searchable<State>,
 
 public:
 
-    explicit algorithmDFS(Searchable<State> *problem) :
-            Searcher<Searchable<State>, std::list<State> *>(problem) {}
+    explicit algorithmDFS(Searchable<State> *problem) : Searcher<State>(problem) {}
 
-    std::list<State> *findTheAnswer() override
+    std::list<State> *findPath() override
     {
         State first = graph->getStart();
 

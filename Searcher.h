@@ -12,14 +12,8 @@
 template<typename State>
 class Searcher
 {
-protected:
-    Searchable<State> *graph;
-
 public:
-
-    explicit Searcher(Searchable<State> *graph) : graph(graph) {};
-
-    virtual std::list<State> *findPath() = 0;
+    virtual std::list<State> *findPath(Searchable<State> *graph) = 0;
 };
 
 #endif //SEARCHINGALGOSERVER_SEARCHER_H

@@ -10,7 +10,7 @@
 #include "Searchable.h"
 
 template <typename State>
-//                       problem            solution
+//                        problem type       solution type
 class OA : public Solver<Searchable<State>, std::list<State> *>
 {
     Searcher<State> *searcher;
@@ -21,7 +21,8 @@ public:
 
     std::list<State> *getSolution(Searchable<State> problem) override
     {
-        return nullptr;
+        std::list<State> *solution = searcher->findPath(problem);
+        return solution;
     }
 };
 

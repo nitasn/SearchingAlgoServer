@@ -14,27 +14,8 @@
 #include <map>
 #include <cmath>
 
-//struct State
-//{
-//    int first, second;
-//    bool operator<(const State &rhs) const
-//    {
-//        if (first < rhs.first)
-//            return true;
-//        if (rhs.first < first)
-//            return false;
-//        return second < rhs.second;
-//    }
-//
-//    bool operator==(const State &rhs) const
-//    {
-//        return first == rhs.first &&
-//               second == rhs.second;
-//    }
-//};
-
 template <typename State>
-class algorithmA_star : public Searcher<Searchable<State>, std::list<State> *>
+class algorithmA_star : public Searcher<State>
 {
     class PopFromEmptyHeap : std::exception {};
 
@@ -43,14 +24,14 @@ class algorithmA_star : public Searcher<Searchable<State>, std::list<State> *>
     std::multimap<double, State> _costs2states; // states that cost that much (sorted from min cost) used as heap
     std::map<State, typename std::multimap<double, State>::iterator> _heap_iters; // for fast deletion
 
-    double avg_weight; // todo init in constructor
-    Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem; // פשוט שם מקוצר
+    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
+    Searchable<State> *graph = Searcher<State>::graph;
 
     double heuristic_cost_to_goal(State &s)
     {
         const State &t = graph->getGoal();
         int diff = abs(t.first - s.first) + abs(t.second - s.second);
-        return diff * avg_weight;
+        return diff * graph->getMinimalWeight();
     }
 
     State pop_min()
@@ -104,7 +85,7 @@ class algorithmA_star : public Searcher<Searchable<State>, std::list<State> *>
 
 public:
 
-    std::list<State> *findTheAnswer() override
+    std::list<State> *findPath() override
     {
         State first = graph->getStart();
         cost_until_here[first] = 0;
@@ -152,10 +133,7 @@ public:
         return path;
     }
 
-    explicit algorithmA_star(Searchable<State> *problem) : Searcher<Searchable<State>, std::list<State> *>(problem)
-    {
-        avg_weight = 7; // todo actually get average weight
-    }
+    explicit algorithmA_star(Searchable<State> *graph) : Searcher<State>(graph) {}
 };
 
 

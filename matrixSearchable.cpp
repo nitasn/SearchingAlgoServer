@@ -116,6 +116,6 @@ double matrixSearchable::getWeight(coords t1, coords t2) {
     itToNum += t2.second;
     return *itToNum;
 
-//   todo todo why not just
+//   todo why not just
 //   return this->matrix[t2.first][t2.second];
 }

@@ -8,32 +8,32 @@
 #include <Searcher.h>
 #include <set>
 #include <queue>
-#include "SearcherAbstarct.h"
 #include "matrixSearchable.h"
 #include <map>
 
-//using namespace std;
-
 template <typename State>
-class algorithmBFS: public Searcher<Searchable<State>, std::list<State> *> {
+class algorithmBFS: public Searcher<State> {
     std::map<State, State> *mapFather = new std::map<State, State>();
     std::queue<State> *queueState = new std::queue<State>();
 
     std::list<State> listState;
-    Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem;
+
+    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
+    Searchable<State> *graph = Searcher<State>::graph;
+
     void inQueueFriend(State state){
-        for (auto nighbors: graph->getNeighbors(state)) {
-            if (mapFather->find(nighbors) == mapFather->end()) {
-                this->queueState->push(nighbors);
-                (*mapFather)[nighbors] = state;
+        for (auto neighbor: graph->getNeighbors(state)) {
+            if (mapFather->find(neighbor) == mapFather->end()) {
+                this->queueState->push(neighbor);
+                (*mapFather)[neighbor] = state;
             }
         }
     }
-public:
-    explicit algorithmBFS(Searchable<State> *problem):
-            Searcher<Searchable<State>, std::list<State> *>(problem) {}
 
-    std::list<State>* findTheAnswer() override {
+public:
+    explicit algorithmBFS(Searchable<State> *graph): Searcher<State>(graph) {}
+
+    std::list<State>* findPath() override {
 //        (*mapFather)[this->graph->getStart()] = nullptr;
         inQueueFriend(this->graph->getStart());
         while (!this->queueState->empty()){

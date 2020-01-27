@@ -11,12 +11,14 @@
 //#include <set>
 //#include <map>
 //
-////using namespace std;
 //template <typename State>
-//class algorithmBestFirstSearch: public Searcher<Searchable<State>, std::list<State> *> {
-//    Searchable<State> *graph = Searcher<Searchable<State>, std::list<State> *>::problem;
+//class algorithmBestFirstSearch: public Searcher<State> {
+//
+//    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
+//    Searchable<State> *graph = Searcher<State>::graph;
+//
 //    std::set<State> visited;
-//    std::multimap<double, State> mul
+//    std::multimap<double, State> mul;
 //    std::map<State, State> *mapFather;
 //    std::list<State> listState;
 //
@@ -25,10 +27,9 @@
 //        (*mapFather)[neighbors] = father;
 //    }
 //public:
-//    explicit algorithmBestFirstSearch(Searchable<State> *problem):
-//        Searcher<Searchable<State>, std::list<State> *>(problem) {}
+//    explicit algorithmBestFirstSearch(Searchable<State> *graph) : Searcher<State>(graph) {}
 //
-//    std::list<State> *findTheAnswer() override {
+//    std::list<State> *findPath() override {
 //        //todo
 //        queueState->push(graph->getStart());
 //        while(!queueState->empty()){

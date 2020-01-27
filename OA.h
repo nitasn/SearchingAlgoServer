@@ -21,8 +21,7 @@ public:
 
     std::list<State> *getSolution(Searchable<State> problem) override
     {
-        std::list<State> *solution = searcher->findPath(problem);
-        return solution;
+        return searcher->findPath(problem);
     }
 };
 

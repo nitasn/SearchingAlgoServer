@@ -5,7 +5,6 @@
 //#ifndef SEARCHINGALGOSERVER_ALGORITHMBESTFIRSTSEARCH_H
 //#define SEARCHINGALGOSERVER_ALGORITHMBESTFIRSTSEARCH_H
 //#include <Searcher.h>
-//#include "SearcherAbstarct.h"
 //#include "matrixSearchable.h"
 //#include <queue>
 //#include <set>
@@ -14,8 +13,7 @@
 //template <typename State>
 //class algorithmBestFirstSearch: public Searcher<State> {
 //
-//    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
-//    Searchable<State> *graph = Searcher<State>::graph;
+//    Searchable<State> *graph;
 //
 //    std::set<State> visited;
 //    std::multimap<double, State> mul;
@@ -27,9 +25,10 @@
 //        (*mapFather)[neighbors] = father;
 //    }
 //public:
-//    explicit algorithmBestFirstSearch(Searchable<State> *graph) : Searcher<State>(graph) {}
+//    std::list<State> *findPath(Searchable<State> *_graph) override {
 //
-//    std::list<State> *findPath() override {
+//        this->graph = _graph;
+//
 //        //todo
 //        queueState->push(graph->getStart());
 //        while(!queueState->empty()){

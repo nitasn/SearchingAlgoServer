@@ -9,7 +9,7 @@ MyTestClientHandler::MyTestClientHandler(Solver<std::string,std::string> *solver
 }
 
 void MyTestClientHandler::handle(vector<string> vectorString, function<void(string&)> send){
-    this->anser = this->solverProblem->solve(vectorString);
+//    this->anser = this->solverProblem->solve(vectorString); todo this line
     stringstream answerBuilder;
     for (string &str : vectorString){
         answerBuilder << str << endl;

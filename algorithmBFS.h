@@ -10,7 +10,12 @@
 #include <queue>
 #include "matrixSearchable.h"
 #include <map>
-
+/**
+ * algorithmBFS implementing sercher with Searchable with state for problem and
+ * state list for solution. algorithmBFS find the way for start state from goul state
+ * with Breadth search.
+ * @tparam State in graph that want run on him
+ */
 template <typename State>
 class algorithmBFS: public Searcher<State> {
     std::map<State, State> *mapFather = new std::map<State, State>();
@@ -30,6 +35,10 @@ class algorithmBFS: public Searcher<State> {
     }
 
 public:
+    /**
+ * findTheAnswer find the way start to goal the way finding with BFS algoritam.
+ * @return pointer to state list with the state in way, start to goal.
+*/
     std::list<State>* findPath(Searchable<State> *_graph) override {
         this->graph = _graph;
 //        (*mapFather)[this->graph->getStart()] = nullptr;
@@ -46,7 +55,10 @@ public:
             }
         return nullptr;
     }
-
+    /**
+    * updateTheWay run on father map from goal until start state,
+    * and add the state for list
+    */
     void updateTheWay(){
         State father = (*mapFather)[graph->getGoal()];
         while(father != this->graph->getStart()){
@@ -56,7 +68,9 @@ public:
         listState.push_front(this->graph->getStart());
     }
 
-
+    /**
+     * delete the algorithm object
+     */
     ~algorithmBFS(){
         delete this->queueState;
         delete this->mapFather;

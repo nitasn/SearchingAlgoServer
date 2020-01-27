@@ -20,7 +20,6 @@ CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../Solver.h
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../algorithmA_star.h
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../algorithmBFS.h
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../algorithmDFS.h
-CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../log.h
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../main.cpp
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../matrixSearchable.h
 

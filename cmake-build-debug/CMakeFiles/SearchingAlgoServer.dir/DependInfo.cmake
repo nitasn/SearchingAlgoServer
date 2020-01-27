@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/nitsan/SearchingAlgoServer/FileCacheManager.cpp" "/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o"
-  "/Users/nitsan/SearchingAlgoServer/MySerialServer.cpp" "/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o"
-  "/Users/nitsan/SearchingAlgoServer/MyTestClientHandler.cpp" "/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o"
-  "/Users/nitsan/SearchingAlgoServer/StringReverser.cpp" "/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o"
-  "/Users/nitsan/SearchingAlgoServer/main.cpp" "/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/main.cpp.o"
-  "/Users/nitsan/SearchingAlgoServer/matrixSearchable.cpp" "/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o"
+  "/home/hodyah/CLionProjects/SearchingAlgoServer/FileCacheManager.cpp" "/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o"
+  "/home/hodyah/CLionProjects/SearchingAlgoServer/MySerialServer.cpp" "/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o"
+  "/home/hodyah/CLionProjects/SearchingAlgoServer/MyTestClientHandler.cpp" "/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o"
+  "/home/hodyah/CLionProjects/SearchingAlgoServer/StringReverser.cpp" "/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o"
+  "/home/hodyah/CLionProjects/SearchingAlgoServer/main.cpp" "/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/main.cpp.o"
+  "/home/hodyah/CLionProjects/SearchingAlgoServer/matrixSearchable.cpp" "/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

@@ -6,7 +6,10 @@
 #define SEARCHINGALGOSERVER_SEARCHABLE_H
 
 #include <list>
-
+/**
+ * Searchable the interfice for Searchable grape
+ * @tparam State in grape
+ */
 template<typename State>
 class Searchable
 {

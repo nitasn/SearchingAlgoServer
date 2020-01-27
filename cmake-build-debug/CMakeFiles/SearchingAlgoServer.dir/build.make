@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /home/hodyah/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/nitsan/SearchingAlgoServer
+CMAKE_SOURCE_DIR = /home/hodyah/CLionProjects/SearchingAlgoServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/nitsan/SearchingAlgoServer/cmake-build-debug
+CMAKE_BINARY_DIR = /home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SearchingAlgoServer.dir/depend.make
@@ -59,81 +59,81 @@ include CMakeFiles/SearchingAlgoServer.dir/flags.make
 
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: CMakeFiles/SearchingAlgoServer.dir/flags.make
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/main.cpp.o -c /Users/nitsan/SearchingAlgoServer/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/main.cpp.o -c /home/hodyah/CLionProjects/SearchingAlgoServer/main.cpp
 
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SearchingAlgoServer.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/SearchingAlgoServer/main.cpp > CMakeFiles/SearchingAlgoServer.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/SearchingAlgoServer/main.cpp > CMakeFiles/SearchingAlgoServer.dir/main.cpp.i
 
 CMakeFiles/SearchingAlgoServer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SearchingAlgoServer.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/SearchingAlgoServer/main.cpp -o CMakeFiles/SearchingAlgoServer.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/SearchingAlgoServer/main.cpp -o CMakeFiles/SearchingAlgoServer.dir/main.cpp.s
 
 CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o: CMakeFiles/SearchingAlgoServer.dir/flags.make
 CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o: ../MySerialServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o -c /Users/nitsan/SearchingAlgoServer/MySerialServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.o -c /home/hodyah/CLionProjects/SearchingAlgoServer/MySerialServer.cpp
 
 CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/SearchingAlgoServer/MySerialServer.cpp > CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/SearchingAlgoServer/MySerialServer.cpp > CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.i
 
 CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/SearchingAlgoServer/MySerialServer.cpp -o CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/SearchingAlgoServer/MySerialServer.cpp -o CMakeFiles/SearchingAlgoServer.dir/MySerialServer.cpp.s
 
 CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o: CMakeFiles/SearchingAlgoServer.dir/flags.make
 CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o: ../StringReverser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o -c /Users/nitsan/SearchingAlgoServer/StringReverser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.o -c /home/hodyah/CLionProjects/SearchingAlgoServer/StringReverser.cpp
 
 CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/SearchingAlgoServer/StringReverser.cpp > CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/SearchingAlgoServer/StringReverser.cpp > CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.i
 
 CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/SearchingAlgoServer/StringReverser.cpp -o CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/SearchingAlgoServer/StringReverser.cpp -o CMakeFiles/SearchingAlgoServer.dir/StringReverser.cpp.s
 
 CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o: CMakeFiles/SearchingAlgoServer.dir/flags.make
 CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o: ../FileCacheManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o -c /Users/nitsan/SearchingAlgoServer/FileCacheManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.o -c /home/hodyah/CLionProjects/SearchingAlgoServer/FileCacheManager.cpp
 
 CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/SearchingAlgoServer/FileCacheManager.cpp > CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/SearchingAlgoServer/FileCacheManager.cpp > CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.i
 
 CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/SearchingAlgoServer/FileCacheManager.cpp -o CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/SearchingAlgoServer/FileCacheManager.cpp -o CMakeFiles/SearchingAlgoServer.dir/FileCacheManager.cpp.s
 
 CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o: CMakeFiles/SearchingAlgoServer.dir/flags.make
 CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o: ../matrixSearchable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o -c /Users/nitsan/SearchingAlgoServer/matrixSearchable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o -c /home/hodyah/CLionProjects/SearchingAlgoServer/matrixSearchable.cpp
 
 CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/SearchingAlgoServer/matrixSearchable.cpp > CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/SearchingAlgoServer/matrixSearchable.cpp > CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.i
 
 CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/SearchingAlgoServer/matrixSearchable.cpp -o CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/SearchingAlgoServer/matrixSearchable.cpp -o CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.s
 
 CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o: CMakeFiles/SearchingAlgoServer.dir/flags.make
 CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o: ../MyTestClientHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o -c /Users/nitsan/SearchingAlgoServer/MyTestClientHandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o -c /home/hodyah/CLionProjects/SearchingAlgoServer/MyTestClientHandler.cpp
 
 CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nitsan/SearchingAlgoServer/MyTestClientHandler.cpp > CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hodyah/CLionProjects/SearchingAlgoServer/MyTestClientHandler.cpp > CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.i
 
 CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nitsan/SearchingAlgoServer/MyTestClientHandler.cpp -o CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hodyah/CLionProjects/SearchingAlgoServer/MyTestClientHandler.cpp -o CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.s
 
 # Object files for target SearchingAlgoServer
 SearchingAlgoServer_OBJECTS = \
@@ -155,7 +155,7 @@ SearchingAlgoServer: CMakeFiles/SearchingAlgoServer.dir/matrixSearchable.cpp.o
 SearchingAlgoServer: CMakeFiles/SearchingAlgoServer.dir/MyTestClientHandler.cpp.o
 SearchingAlgoServer: CMakeFiles/SearchingAlgoServer.dir/build.make
 SearchingAlgoServer: CMakeFiles/SearchingAlgoServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable SearchingAlgoServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable SearchingAlgoServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SearchingAlgoServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -168,6 +168,6 @@ CMakeFiles/SearchingAlgoServer.dir/clean:
 .PHONY : CMakeFiles/SearchingAlgoServer.dir/clean
 
 CMakeFiles/SearchingAlgoServer.dir/depend:
-	cd /Users/nitsan/SearchingAlgoServer/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nitsan/SearchingAlgoServer /Users/nitsan/SearchingAlgoServer /Users/nitsan/SearchingAlgoServer/cmake-build-debug /Users/nitsan/SearchingAlgoServer/cmake-build-debug /Users/nitsan/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hodyah/CLionProjects/SearchingAlgoServer /home/hodyah/CLionProjects/SearchingAlgoServer /home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug /home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug /home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/CMakeFiles/SearchingAlgoServer.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SearchingAlgoServer.dir/depend
 

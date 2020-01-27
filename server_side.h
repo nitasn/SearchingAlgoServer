@@ -15,10 +15,18 @@
 #include <vector>
 #include <arpa/inet.h>
 #include <functional>
-
+#define SIZE_BUFFER 1024
+// todo what is it?
+#define MAX_CONNECTIONS 30
+/**
+ * server_side have the class of handle clients
+ */
 namespace server_side
 {
 
+    /**
+     * client handler get problem for server and return sholtion
+     */
     struct ClientHandler
     {
 //        virtual void handle(std::istream &inStreamToHandle, std::ostream &outStreamToHandle) = 0;
@@ -31,6 +39,10 @@ namespace server_side
             close(this->client_socket);
         }
     };
+    /**
+ * Server listen to client and get him input,
+ * send to client handle and send anser to cliet
+ */
     struct Server
     {
         //todo this need to be in loop? or how this work?
@@ -49,6 +61,11 @@ namespace server_side
         virtual void stop() = 0;
 //        void connectToClient(int port, ClientHandler *clientHandler);
         virtual void start(int port, ClientHandler *clientHandler) =0;
+        /**
+ * playThePort open the port to client
+ * @param port to listen
+ * @param clientHandler client to handle the problem
+ */
         void playThePort(int port, ClientHandler *clientHandler){
             this->clientHandler = clientHandler;
             this->socketfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -85,6 +102,48 @@ namespace server_side
 //                throw notConnectToHostServer();
 //            }
 //        }
+        /**
+          * static function to listen in loop
+          * @param self
+          */
+        static void serverListenLoop(server_side::Server* self){
+            class notSeccsedListenToClient: public std::exception{};
+            class notSeccsedAcceptingClient: public std::exception{};
+            while (!self->should_stop){
+                if (listen(self->socketfd, MAX_CONNECTIONS) == -1) { // todo should listen be outside the loop?
+                    throw notSeccsedListenToClient();
+                } else{
+                    std::cout<<"Server is now listening ..."<<std::endl;
+                }
+                self->client_socket = accept(self->socketfd, (struct sockaddr *) &self->address,
+                                             (socklen_t *) &self->address);
+                if (self->client_socket == -1) {
+                    throw notSeccsedAcceptingClient();
+                }
+//        while (true){
+                char buffer[SIZE_BUFFER] = {"start"};
+                //todo check what id the assigmnet
+                const char *endLisenLinux = "end\r\n";
+                const char *endLisenNotLinux = "end\n";
+                std::vector<std::string> vectorInputStram;
+//        istringstream inStream(string(buffer,SIZE_BUFFER));
+                //todo this is good? can be end in begging? this is the end?
+                while(strcmp(endLisenLinux, buffer) != 0 && strcmp(endLisenNotLinux, buffer) != 0){
+                    int msg_size = read(self->client_socket , &buffer, SIZE_BUFFER);
+                    //todo לא בהכרח נצליח לקרוא את כל השורה. צריך ליצור דרך כך שאם זה יותר משורה זה יהיה בסדר
+                    std::string data(buffer, msg_size);
+                    vectorInputStram.push_back(data);
+                }
+                class notSeccsedSendToClient: public std::exception{};
+                auto sendOver = [&](std::string &str)
+                {
+                    if (send(self->client_socket, str.c_str(), str.length(), 0) == -1){
+                        throw notSeccsedSendToClient();
+                    }
+                };
+                self->clientHandler->handle(vectorInputStram, sendOver);
+            }
+        }
     };
 }
 

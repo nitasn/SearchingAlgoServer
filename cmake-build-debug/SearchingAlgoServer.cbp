@@ -8,144 +8,148 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/nitsan/SearchingAlgoServer/cmake-build-debug"/>
+				<Option working_dir="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/nitsan/SearchingAlgoServer/cmake-build-debug"/>
+				<Option working_dir="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/Users/nitsan/SearchingAlgoServer/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SearchingAlgoServer">
-				<Option output="/Users/nitsan/SearchingAlgoServer/cmake-build-debug/SearchingAlgoServer" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/nitsan/SearchingAlgoServer/cmake-build-debug"/>
+				<Option output="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/SearchingAlgoServer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/nitsan/SearchingAlgoServer/."/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/home/hodyah/CLionProjects/SearchingAlgoServer/."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 SearchingAlgoServer"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 SearchingAlgoServer"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SearchingAlgoServer/fast">
-				<Option output="/Users/nitsan/SearchingAlgoServer/cmake-build-debug/SearchingAlgoServer" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/nitsan/SearchingAlgoServer/cmake-build-debug"/>
+				<Option output="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/SearchingAlgoServer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/nitsan/SearchingAlgoServer/."/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/home/hodyah/CLionProjects/SearchingAlgoServer/."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 SearchingAlgoServer/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nitsan/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 SearchingAlgoServer/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hodyah/CLionProjects/SearchingAlgoServer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/CacheManager.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/CacheManager.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/FileCacheManager.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/FileCacheManager.cpp">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/FileCacheManager.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/FileCacheManager.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/MySerialServer.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/MySerialServer.cpp">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/MySerialServer.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/MySerialServer.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/MyTestClientHandler.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/MyTestClientHandler.cpp">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/MyTestClientHandler.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/MyTestClientHandler.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/OA.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/OA.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/Searchable.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/Searchable.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/Searcher.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/Searcher.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/Solver.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/Solver.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/StringReverser.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/StringReverser.cpp">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/algorithmA_star.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/algorithmA_star.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/algorithmBFS.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/algorithmBFS.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/algorithmBestFirstSearch.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/algorithmBestFirstSearch.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/algorithmDFS.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/algorithmDFS.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/log.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/log.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/main.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/main.cpp">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/matrixSearchable.cpp">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/matrixSearchable.cpp">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/matrixSearchable.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/matrixSearchable.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/server_side.h">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/server_side.h">
 			<Option target="SearchingAlgoServer"/>
 		</Unit>
-		<Unit filename="/Users/nitsan/SearchingAlgoServer/CMakeLists.txt">
+		<Unit filename="/home/hodyah/CLionProjects/SearchingAlgoServer/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -18,8 +18,7 @@ class algorithmBFS: public Searcher<State> {
 
     std::list<State> listState;
 
-    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
-    Searchable<State> *graph = Searcher<State>::graph;
+    Searchable<State> *graph;
 
     void inQueueFriend(State state){
         for (auto neighbor: graph->getNeighbors(state)) {
@@ -31,9 +30,8 @@ class algorithmBFS: public Searcher<State> {
     }
 
 public:
-    explicit algorithmBFS(Searchable<State> *graph): Searcher<State>(graph) {}
-
-    std::list<State>* findPath() override {
+    std::list<State>* findPath(Searchable<State> *_graph) override {
+        this->graph = _graph;
 //        (*mapFather)[this->graph->getStart()] = nullptr;
         inQueueFriend(this->graph->getStart());
         while (!this->queueState->empty()){

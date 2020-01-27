@@ -204,9 +204,9 @@ std::ostream& operator<<(std::ostream &os, const coords &ij) {
 
 int main()
 {
-    algorithmA_star<coords> dfs(graph);
+    algorithmA_star<coords> dfs;
 
-    auto *path = dfs.findPath();
+    auto *path = dfs.findPath(graph);
 
     if (path == nullptr)
     {

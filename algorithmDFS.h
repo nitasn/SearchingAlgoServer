@@ -13,8 +13,7 @@ template<typename State> class algorithmDFS : public Searcher<State>
 {
     std::set<State> visited;
 
-    // מאיזושהי סיבה (בגלל שזה טמפלייט?) אין גישה אליו דרך פשוט ״graph״, למרות שהיינו אמורים לרשת אותו, אז הנה קיצור אליו
-    Searchable<State> *graph = Searcher<State>::graph;
+    Searchable<State> *graph;
 
     std::list<State> *recursivePathFinder(State state)
     {
@@ -45,10 +44,10 @@ template<typename State> class algorithmDFS : public Searcher<State>
 
 public:
 
-    explicit algorithmDFS(Searchable<State> *problem) : Searcher<State>(problem) {}
-
-    std::list<State> *findPath() override
+    std::list<State> *findPath(Searchable<State> *_graph) override
     {
+        this->graph = _graph;
+
         State first = graph->getStart();
 
         return recursivePathFinder(first);

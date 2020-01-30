@@ -5,18 +5,18 @@
 #ifndef SEARCHINGALGOSERVER_MATRIXSEARCHABLE_H
 #define SEARCHINGALGOSERVER_MATRIXSEARCHABLE_H
 
-//struct coords
-//{
-//    int I, J;
-//};
+
 #include <istream>
 #include <tuple>
 #include "Searchable.h"
+#include <vector>
 
 typedef std::pair<int, int> coords;
 
 class matrixSearchable : public Searchable<coords>
 {
+    std::vector<std::vector<int>> matrix;
+
     int numRows = 0;
     int numColumns = 0;
     coords start;
@@ -36,7 +36,6 @@ class matrixSearchable : public Searchable<coords>
 public:
     double getWeight(coords t1, coords t2) override;
 
-    std::vector<std::vector<int>> matrix; // TODO MAKE PRIVATE
     explicit matrixSearchable(std::vector<std::string> &stringVector);
 
     coords getStart() override;
@@ -48,6 +47,11 @@ public:
     double getMinimalWeight() override
     {
         return minWeight;
+    }
+
+    double getCellCost(coords &ij)
+    {
+        return matrix[ij.first][ij.second];
     }
 };
 

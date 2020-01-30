@@ -1,143 +1,95 @@
-////
-//// Created by Nitsan BenHanoch on 12/01/2020.
-////
-//
-//#include <vector>
-//#include <string>
-//#include <iostream>
-//#include <fstream>
-//#include <dirent.h>
-//#include <cstring>
-////#include "FileCacheManager.h"
-//
-//using namespace std;
-//
-//
-//class ls {
-//    static bool wild_match(const string &str, const string &pattern)
-//    {
-//        string::const_iterator str_it = str.begin();
-//
-//        for (auto pat_it = pattern.begin(); pat_it != pattern.end(); ++pat_it) {
-//            switch (*pat_it) {
-//                case '*': {
-//                    if (pat_it + 1 == pattern.end()) {
-//                        return true;
-//                    }
-//
-//                    const size_t max = strlen(&*str_it);
-//
-//                    for (size_t I = 0; I < max; ++I) {
-//                        if (wild_match(&*(pat_it + 1), &*(str_it + I))) {
-//                            return true;
-//                        }
-//                    }
-//
-//                    return false;
-//                }
-//                default:
-//                    if (*str_it != *pat_it) {
-//                        return false;
-//                    }
-//
-//                    ++str_it;
-//            }
-//        }
-//
-//        return str_it == str.end();
-//    }
-//
-//public:
-//    class CouldNotOpenDirectory : exception {};
-//
-//    /** שמות הקבצים בתיקייה כשלהי שמתאימים לתבנית כלשהי */
-//    static vector<string> get_filenames(const char *dir_name, const string &pattern)
-//    {
-//        DIR *dir;
-//        struct dirent *ent;
-//        if ((dir = opendir(dir_name)) == NULL) throw CouldNotOpenDirectory();
-//
-//        vector<string> results;
-//
-//        while ((ent = readdir(dir)) != NULL) // iterate over all files in directory
-//        {
-//            if (wild_match(ent->d_name, pattern)) {
-//                results.emplace_back(ent->d_name);
-//            }
-//        }
-//        closedir(dir);
-//
-//        return results;
-//    }
-//};
-////template<typename T> constexpr auto type_name(){
-////    return "string";
-////}
-/////** type_name<int>() returns "int" */
-////template<typename T>
-////constexpr auto type_name()
-////{
-////    string_view name, prefix, suffix;
-////#ifdef __clang__
-////    name = __PRETTY_FUNCTION__;
-////    prefix = "auto type_name() [T = ";
-////    suffix = "]";
-////#elif defined(__GNUC__)
-////    name = __PRETTY_FUNCTION__;
-////    prefix = "constexpr auto type_name() [with T = ";
-////    suffix = "]";
-////#elif defined(_MSC_VER)
-////    name = __FUNCSIG__;
-////    prefix = "auto __cdecl type_name<";
-////    suffix = ">(void)";
-////#endif
-////    name.remove_prefix(prefix.size());
-////    name.remove_suffix(suffix.size());
-////    return name;
-////}
-////type_name
-///** מחזיר סטרינג קצר שמייצג האש של הסטרינג הנתון */
-////string str_hash(string &str)
-////{
-////    size_t h = std::hash<string>{}(str);
-////
-////    return tretrieveo_string(h);
-////}
-//
-////namespace cache_manager
-////{
-////    void FileCacheManager::store(string &problem, string &solution)
-////    {
-////        throw "not implemented";
-////    }
-////
-////    string FileCacheManager::retrieve(string &problem)
-////    {
-//////        string fileNameStirng = "string#" + str_hash(problem) + "#*";
-////        string fileNameStirng = "a";
-////        vector<string> optionalFilesOfHaseProblem = ls::get_filenames(fileNameStirng.c_str(),"*.cpp");
-////        vector<string>::iterator it = optionalFilesOfHaseProblem.begin();
-////        fstream fileOfProblem;
-////        for(it; it != optionalFilesOfHaseProblem.end(); it++){
-////            fileOfProblem.open(*it, ios::binary);
-////            if (!fileOfProblem){throw cache_manager::FileCacheManager::notSeeccsedOpenTheFile();}
-////            //todo check what the size
-////            char *bufferSize = new char[1];
-////            fileOfProblem.read(bufferSize, 1);
-////            char* bufferProblem = new char[atoi(bufferSize)];
-////            fileOfProblem.read(bufferProblem, atoi(bufferSize));
-////            if (strcmp(problem.c_str(),bufferProblem) == 0){
-////                delete(bufferProblem, bufferSize); break; }
-////            delete(bufferProblem, bufferSize);
-////            fileOfProblem.close();
-////        }
-////        string anser;
-////        fileOfProblem >> anser;
-////        return anser;
-////    }
-////
-////    bool FileCacheManager::is_cached(string &problem){
-////        throw "not implemented";
-////    }
-////
-////}
+#include <iostream>
+#include <string>
+#include <list>
+#include <unordered_map>
+#include <fstream>
+#include <sstream>
+#include "FileCacheManager.h"
+
+using namespace std;
+
+std::string filename(string &problem)
+{
+    size_t h = hash<string>{}(problem);
+    return to_string(h);
+}
+
+void cache_manager::FileCacheManager::pop_lru_if_at_max_capacity()
+{
+    if (mru_list.size() >= capacity)
+    {
+        iters_map.erase(mru_list.back().first); // delete by key of the last element
+        mru_list.pop_back();
+    }
+}
+
+void cache_manager::FileCacheManager::store(string &problem, string &solution)
+{
+    ofstream file;
+    file.open(filename(problem));
+    if (!file)
+    {
+        throw CouldNotOpenFile();
+    }
+    file.write(solution.c_str(), solution.size());
+    file.close();
+
+    if (iters_map.find(problem) == iters_map.end()) // if NOT in lru
+    {
+        pop_lru_if_at_max_capacity(); // because we are going to insert to lru
+    }
+    else // if IS in lru
+    {
+        mru_list.erase(iters_map[problem]); // so it gets to the head of the list
+        // no need to erase from map, key's val will just be changed
+    }
+
+    mru_list.push_front(pair<string, string>(problem, solution));
+    iters_map[problem] = mru_list.begin();
+}
+
+std::string cache_manager::FileCacheManager::retrieve(string &problem)
+{
+    string solution;
+
+    if (iters_map.find(problem) == iters_map.end()) // if NOT in lru, we need to get it from file
+    {
+        ifstream file;
+        file.open(filename(problem));
+
+        if (!file)
+        {
+            throw UnKnownKey();
+        }
+        try
+        {
+            std::stringstream buffer;
+            buffer << file.rdbuf();
+            solution = buffer.str();
+        }
+        catch (...)
+        {
+            file.close();
+            throw CouldNotInterpretFile();
+        }
+        file.close();
+
+        pop_lru_if_at_max_capacity(); // because we are going to add to lru
+    }
+    else // if IS in lru
+    {
+        solution = iters_map[problem]->second;
+        mru_list.erase(iters_map[problem]); // to get it to the head of the list...
+    }
+
+    mru_list.push_front(pair<string, string>(problem, solution));
+    iters_map[problem] = mru_list.begin();
+
+    return solution;
+}
+
+bool cache_manager::FileCacheManager::is_cached(string &problem)
+{
+    return static_cast<bool>(ifstream(filename(problem)));
+}
+

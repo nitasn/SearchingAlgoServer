@@ -7,22 +7,18 @@
 
 #include "Solver.h"
 #include "Searcher.h"
-#include "Searchable.h"
+#include "matrixSearchable.h"
 
-template <typename State>
-//                        problem type       solution type
-class OA : public Solver<Searchable<State>, std::list<State> *>
+//                                    problem      solution
+class OA : public server_side::Solver<std::string, std::string>
 {
-    Searcher<State> *searcher;
+    Searcher<coords> *searcher;
 
 public:
 
-    explicit OA(Searcher<State> *searcher) : searcher(searcher) {}
+    explicit OA(Searcher<coords> *searcher) : searcher(searcher) {}
 
-    std::list<State> *getSolution(Searchable<State> problem) override
-    {
-        return searcher->findPath(problem);
-    }
+    std::string getSolution(std::string &problem) override;
 };
 
 #endif //SEARCHINGALGOSERVER_OA_H

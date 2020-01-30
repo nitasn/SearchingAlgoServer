@@ -5,13 +5,13 @@
 #ifndef SEARCHINGALGOSERVER_SOLVER_H
 #define SEARCHINGALGOSERVER_SOLVER_H
 
-
-template<typename Problem, typename Solution>
-struct Solver
+namespace server_side
 {
-    //todo solver - check if semothing in chcah, or solve him
-    virtual Solution getSolution(Problem problem) = 0;
-};
-
+    template<typename Problem, typename Solution>
+    struct Solver
+    {
+        virtual Solution getSolution(Problem &problem) = 0;
+    };
+}
 
 #endif //SEARCHINGALGOSERVER_SOLVER_H

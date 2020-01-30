@@ -8,27 +8,28 @@ include_directories(.)
 
 add_executable(
         SearchingAlgoServer
-        main.cpp
-        server_side.h
+        BaseServer.cpp
+        BaseServer.h
         CacheManager.h
-        MySerialServer.h
-        MySerialServer.cpp
-        Solver.h
-        StringReverser.cpp
+        ClientHandler.h
         FileCacheManager.cpp
         FileCacheManager.h
-        FileCacheManager.cpp
-        FileCacheManager.h
-        MyTestClientHandler.h 
-        Searchable.h 
-        Searcher.h 
-        matrixSearchable.cpp 
-        matrixSearchable.h
-        algorithmBFS.h
-        MyTestClientHandler.cpp
-        algorithmDFS.h
-        algorithmBestFirstSearch.h
-        log.h
-        algorithmA_star.h
+        OA.cpp
         OA.h
+        ParallelServer.cpp
+        ParallelServer.h
+        Searchable.h
+        Searcher.h
+        SerialServer.cpp
+        SerialServer.h
+        Solver.h
+        algorithmA_star.h
+        algorithmBFS.h
+        algorithmBestFirstSearch.h
+        algorithmDFS.h
+        log_info.cpp
+        log_info.h
+        main.cpp
+        matrixSearchable.cpp
+        matrixSearchable.h
 )

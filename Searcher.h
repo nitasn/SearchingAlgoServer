@@ -5,7 +5,7 @@
 #ifndef SEARCHINGALGOSERVER_SEARCHER_H
 #define SEARCHINGALGOSERVER_SEARCHER_H
 
-#include <Searchable.h>
+#include "Searchable.h"
 #include "Solver.h"
 
 

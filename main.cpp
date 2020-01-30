@@ -9,6 +9,7 @@
 #include "SerialServer.h"
 #include "OA.h"
 #include "ParallelServer.h"
+#include "log_info.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ void sleep_forever()
 
 int main()
 {
-    Searcher<coords> *searcher = new algorithmBestFirstSearch<coords>;
+    Searcher<coords> *searcher = new algorithmA_star<coords>;
 
     server_side::Solver<string, string> *solver = new OA(searcher);
 

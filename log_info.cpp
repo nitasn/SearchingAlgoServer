@@ -1,12 +1,36 @@
 //
 // Created by Nitsan BenHanoch on 29/01/2020.
 //
-
-
 #include <iostream>
 
 using namespace std;
 
-ostream &log_info = cout;
+//class WhereverStream : public ostream
+//{
+//    ostream *_stream;
+//};
 
-// could be changed to a file, or to something like /dev/null
+class IgnoreStream : public ostream
+{
+public:
+    IgnoreStream() : ostream(nullptr) {}
+
+    IgnoreStream(const IgnoreStream &) : ostream(nullptr) {}
+};
+
+template<class T>
+const IgnoreStream &operator<<(IgnoreStream &&os, const T &value)
+{
+    return os;
+}
+
+IgnoreStream nowhere;
+
+
+// todo make log_info an object that inherit ostream and contains the methods:
+//  + output_to_cout
+//  + output_to_nowhere
+
+
+//ostream &log_info = nowhere;
+ostream &log_info = cout;

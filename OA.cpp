@@ -10,6 +10,17 @@
 using namespace std;
 
 
+string clear_whitespaces(const string &str)
+{
+    stringstream result;
+
+    for (auto c : str) {
+        if (!isspace(c))
+            result << c;
+    }
+    return result.str();
+}
+
 /**
  * input: one string:
  * 1, 2\r\n3, 4\r\n
@@ -28,9 +39,16 @@ vector<string> splitToLines(string &problem)
     while (last < problem.size())
     {
         next = problem.find(ENDING, last);
+
         if (next == NOT_FOUND)
+        {
             next = problem.size();
-        results.push_back(problem.substr(last, next - last) + ENDING);
+        }
+        string line = clear_whitespaces(problem.substr(last, next - last));
+        if (!line.empty())
+        {
+            results.push_back(line + ENDING);
+        }
         last = next + ENDING.size();
     }
     return results;

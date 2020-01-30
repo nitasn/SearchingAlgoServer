@@ -9,5 +9,4 @@
 
 extern std::ostream &log_info;
 
-
 #endif //SERVER_TEST_LOG_H

@@ -5,7 +5,7 @@
 
 #ifndef SEARCHINGALGOSERVER_ALGORITHMBESTFIRSTSEARCH_H
 #define SEARCHINGALGOSERVER_ALGORITHMBESTFIRSTSEARCH_H
-#include <Searcher.h>
+#include "Searcher.h"
 #include "matrixSearchable.h"
 #include <queue>
 #include <set>

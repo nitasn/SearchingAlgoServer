@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Solver.h"
 #include "FileCacheManager.h"
+#include "log_info.h"
 
 namespace server_side
 {
@@ -24,7 +25,18 @@ namespace server_side
                 return cache.retrieve(question);
             }
 
-            std::string answer = solver->getSolution(question);
+            std::string answer;
+
+            try
+            {
+                answer = solver->getSolution(question);
+            }
+            catch (...)
+            {
+                log_info << "ClientHandler: exception thrown while trying to find an answer to the question";
+                return "\r\nan error occurred :( sorry, could not get an answer to your question. \r\n\r\n";
+            }
+
 
             cache.store(question, answer);
 

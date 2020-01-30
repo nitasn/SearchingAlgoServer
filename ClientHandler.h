@@ -19,14 +19,14 @@ namespace server_side
 
         std::string handle_client(std::string &question)
         {
-//            if (cache.is_cached(question))
-//            {
-//                return cache.retrieve(question);
-//            }
+            if (cache.is_cached(question))
+            {
+                return cache.retrieve(question);
+            }
 
             std::string answer = solver->getSolution(question);
 
-//            cache.store(question, answer);
+            cache.store(question, answer);
 
             return answer;
         }

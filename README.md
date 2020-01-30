@@ -24,13 +24,16 @@ Then the word "end".
 ```bash
 ./paths_server&  # run server
 telnet localhost 5400  # connect using telnet
+
  1,  9,  2,  1
 -1,  3,  8,  2
  7, 20, -1, 31
  4,  3,  5,  4
+ 
 2, 0
 1, 3
 end
+
 # yields:
 # (7) right -> (27) up -> (30) right -> (38) right -> (40) at goal
 ```

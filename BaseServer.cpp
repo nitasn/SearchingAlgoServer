@@ -9,19 +9,48 @@
 #include <netinet/in.h>
 #include "ClientHandler.h"
 #include <unistd.h>
+#include <sstream>
 
 using namespace std;
 
 
 bool str_ends_with(string const &fullString, string const &ending)
 {
-    if (fullString.length() >= ending.length())
-    {
-        return fullString.compare(fullString.length() - ending.length(), ending.length(), ending) == 0;
-    }
-    return false;
+    if (fullString.length() < ending.length())
+        return false;
+
+    return fullString.compare(fullString.length() - ending.length(), ending.length(), ending) == 0;
 }
 
+
+/**
+ * make sure new lines symbols are \r\n and not just \n or \r
+ * @example "abc \r xyz \r\n 1234 \n blah" -> "abc \r\n xyz \r\n 1234 \r\n blah"
+ */
+string fix_new_lines_symbols(const string& str)
+{
+    stringstream builder;
+
+    char last_char = '\0';
+
+    for (char letter : str)
+    {
+        if (letter == '\n')
+        {
+            if (last_char != '\r')
+                builder << '\r';
+        }
+        else
+        {
+            if (last_char == '\r')
+                builder << '\n';
+        }
+        builder << letter;
+        last_char = letter;
+    }
+
+    return builder.str();
+}
 
 namespace server_side
 {
@@ -119,6 +148,9 @@ namespace server_side
             msg_to_client += string(buffer, msg_length); // todo that's O(buffer) instead of O(1)... fix later
                                                          //  currently needed to check if msg ended with ENDING
                                                          //  cause it might split into more than one buffers...
+
+            msg_to_client = fix_new_lines_symbols(msg_to_client); // yes, that does make it O(n^2). it's an awful hack
+
             if (str_ends_with(msg_to_client, ENDING))
             {
                 msg_to_client = msg_to_client.substr(0, msg_to_client.size() - ENDING.size());

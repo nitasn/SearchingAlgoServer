@@ -23,7 +23,6 @@ class algorithmBestFirstSearch: public Searcher<State> {
     Searchable<State> *graph;
     std::multimap<double, State> mapOfcost;
     std::map<State, State> *mapFather = new std::map<State, State>();;
-    std::list<State> listState;
 
 public:
     /**
@@ -42,8 +41,7 @@ public:
             double costCuurentWay = mapOfcost.begin()->first;
             mapOfcost.erase(mapOfcost.begin());
             if (state == graph->getGoal()){
-                updateTheWay();
-                return &this->listState;
+                return updateTheWay();
             }
             for (auto neighbors :graph->getNeighbors(state)){
                 if(mapFather->count(neighbors) == 0){
@@ -59,14 +57,21 @@ public:
      * updateTheWay run on father map from goal until start state,
      * and add the state for list
      */
-    void updateTheWay(){
+    std::list<State> *updateTheWay()
+    {
+        auto *listState = new std::list<State>;
+
         State father = (*mapFather)[graph->getGoal()];
-        listState.push_front(graph->getGoal());
+        listState->push_front(graph->getGoal());
         while(father != this->graph->getStart()){
-            listState.push_front(father);
+            listState->push_front(father);
             father = (*mapFather)[father];
         }
-        listState.push_front(this->graph->getStart());
+
+        if (graph->getStart() != graph->getGoal()) // magnificent plaster
+            listState->push_front(this->graph->getStart());
+
+        return listState;
     }
 
     /**

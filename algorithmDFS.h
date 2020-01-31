@@ -8,6 +8,8 @@
 #include "Searcher.h"
 #include <set>
 #include <list>
+#include <map>
+
 /**
  * algorithmDFS implementing sercher with Searchable with state for problem and
  * state list for solution. algorithmDFS find the way for start state from goul state
@@ -16,54 +18,56 @@
  */
 template<typename State> class algorithmDFS : public Searcher<State>
 {
-    std::set<State> visited;
-
-    Searchable<State> *graph;
-    /**
-     * find for state in recursive way the from him nighbord
-     * to goal, and add him self to the list.
-     * @param state to find way
-     * @return list state to goal
-     */
-    std::list<State> *recursivePathFinder(State state)
-    {
-        if (visited.find(state) == visited.end()) // אם עוד לא ביקרנו בקודקוד הזה
-        {
-            visited.insert(state);
-
-            if (graph->getGoal() == state)
-            {
-                auto *lst = new std::list<State>;
-                lst->push_front(state);
-                return lst;
-            }
-
-            for (State neighbor : graph->getNeighbors(state))
-            {
-                auto way = recursivePathFinder(neighbor);
-
-                if (way != nullptr)
-                {
-                    way->push_front(state);
-                    return way;
-                }
-            }
-        }
-        return nullptr;
-    }
 
 public:
     /**
     * findPath find the way start to goal the way finding with DFS algoritam.
     * @return pointer to state list with the state in way, start to goal.
     */
-    std::list<State> *findPath(Searchable<State> *_graph) override
+    std::list<State> *findPath(Searchable<State> *graph) override
     {
-        this->graph = _graph;
+        std::set<State> visited;
+        std::list<State> stack;
+        std::map<State, State> fathers;
 
-        State first = graph->getStart();
+        stack.push_back(graph->getStart());
+        visited.insert(graph->getStart());
 
-        return recursivePathFinder(first);
+        while (true)
+        {
+            if (stack.empty())
+                return nullptr;
+
+            auto current = stack.back();
+            stack.pop_back();
+
+            if (graph->getGoal() == current)
+                break;
+
+            for (State &neighbor : graph->getNeighbors(current))
+            {
+                if (visited.find(neighbor) == visited.end())
+                {
+                    fathers[neighbor] = current;
+                    visited.insert(neighbor);
+                    stack.push_back(neighbor);
+                }
+
+            }
+        }
+
+        auto *path = new std::list<State>;
+
+        State link = graph->getGoal();
+        path->push_front(link);
+
+        while (fathers.find(link) != fathers.end())
+        {
+            link = fathers[link];
+            path->push_front(link);
+        }
+
+        return path;
     }
 };
 

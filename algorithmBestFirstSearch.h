@@ -21,8 +21,8 @@ template <typename State>
  */
 class algorithmBestFirstSearch: public Searcher<State> {
     Searchable<State> *graph;
-    std::multimap<double, State> mapOfcost;
-    std::map<State, State> *mapFather = new std::map<State, State>();;
+    std::multimap<double, State> mapOfCost;
+    std::map<State, State> mapFather;
 
 public:
     /**
@@ -32,21 +32,24 @@ public:
      */
     std::list<State> *findPath(Searchable<State> *_graph) override
     {
+        mapOfCost.clear();
+        mapFather.clear();
         this->graph = _graph;
 
-        mapOfcost.insert(std::pair<double, State>(0, graph->getStart()));
-        (*mapFather)[graph->getStart()] = graph->getStart();
-        while(!mapOfcost.empty()){
-            State state = mapOfcost.begin()->second;
-            double costCuurentWay = mapOfcost.begin()->first;
-            mapOfcost.erase(mapOfcost.begin());
-            if (state == graph->getGoal()){
+        mapOfCost.insert(std::pair<double, State>(0, graph->getStart()));
+        mapFather[graph->getStart()] = graph->getStart();
+        while(!mapOfCost.empty()){
+            State state = mapOfCost.begin()->second;
+            double costCurrentWay = mapOfCost.begin()->first;
+            mapOfCost.erase(mapOfCost.begin());
+            if (state == graph->getGoal())
+            {
                 return updateTheWay();
             }
             for (auto neighbors :graph->getNeighbors(state)){
-                if(mapFather->count(neighbors) == 0){
-                    (*mapFather)[neighbors] = state;
-                    mapOfcost.insert(std::pair<double, State>(costCuurentWay +
+                if(mapFather.count(neighbors) == 0){
+                    mapFather[neighbors] = state;
+                    mapOfCost.insert(std::pair<double, State>(costCurrentWay +
                                                               graph->getWeight(state, neighbors), neighbors));
                 }
             }
@@ -61,24 +64,18 @@ public:
     {
         auto *listState = new std::list<State>;
 
-        State father = (*mapFather)[graph->getGoal()];
+        State father = mapFather[graph->getGoal()];
         listState->push_front(graph->getGoal());
         while(father != this->graph->getStart()){
             listState->push_front(father);
-            father = (*mapFather)[father];
+            father = mapFather[father];
         }
 
         if (graph->getStart() != graph->getGoal()) // magnificent plaster
             listState->push_front(this->graph->getStart());
 
+        std::cout << "best_fs touched " << mapFather.size() << " states" << std::endl; // todo delete this line
         return listState;
-    }
-
-    /**
-     * delete the algorithm object
-     */
-    ~algorithmBestFirstSearch(){
-        delete this->mapFather;
     }
 };
 

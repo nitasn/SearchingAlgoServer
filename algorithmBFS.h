@@ -17,68 +17,60 @@
  * @tparam State in graph that want run on him
  */
 template <typename State>
-class algorithmBFS: public Searcher<State> {
-
-    // todo קורס עבור מטריצות בגודל 1 על 1
-    //  וגם מסלול מקודקוד לעצמו לא אפשרי - הוא הולך לשכן וחוזר משם לעצמו
-
-    std::map<State, State> *mapFather = new std::map<State, State>(); // those two
-    std::queue<State> *queueState = new std::queue<State>();          // don't need "new"
-
-    std::list<State> *listState = new std::list<State>;
-
-    Searchable<State> *graph;
-
-    void inQueueFriend(State state){
-        for (auto neighbor: graph->getNeighbors(state)) {
-            if (mapFather->find(neighbor) == mapFather->end()) {
-                this->queueState->push(neighbor);
-                (*mapFather)[neighbor] = state;
-            }
-        }
-    }
+class algorithmBFS: public Searcher<State>
+{
 
 public:
     /**
  * findTheAnswer find the way start to goal the way finding with BFS algoritam.
  * @return pointer to state list with the state in way, start to goal.
 */
-    std::list<State>* findPath(Searchable<State> *_graph) override {
-        this->graph = _graph;
-//        (*mapFather)[this->graph->getStart()] = nullptr;
-        inQueueFriend(this->graph->getStart());
-        while (!this->queueState->empty()){
-                State state = this->queueState->front();
-                if (state == graph->getGoal()) {
-                    listState->push_back(state);
-                    updateTheWay();
-                    return listState;
-                }
-                inQueueFriend(state);
-                this->queueState->pop();
-            }
-        return nullptr;
-    }
-    /**
-    * updateTheWay run on father map from goal until start state,
-    * and add the state for list
-    */
-    void updateTheWay()
+    std::list<State>* findPath(Searchable<State> *graph) override
     {
-        State father = (*mapFather)[graph->getGoal()];
-        while(father != this->graph->getStart()){
-            listState->push_front(father);
-            father = (*mapFather)[father];
-        }
-        listState->push_front(this->graph->getStart());
-    }
+        std::set<State> visited;
+        std::list<State> queue;
+        std::map<State, State> fathers;
 
-    /**
-     * delete the algorithm object
-     */
-    ~algorithmBFS(){
-        delete this->queueState;
-        delete this->mapFather;
+        queue.push_back(graph->getStart());
+        visited.insert(graph->getStart());
+
+        while (true)
+        {
+            if (queue.empty())
+                return nullptr;
+
+            auto current = queue.front();
+            queue.pop_front();
+
+            if (graph->getGoal() == current)
+                break;
+
+            for (State &neighbor : graph->getNeighbors(current))
+            {
+                if (visited.find(neighbor) == visited.end())
+                {
+                    fathers[neighbor] = current;
+                    visited.insert(neighbor);
+                    queue.push_back(neighbor);
+                }
+
+            }
+        }
+
+        auto *path = new std::list<State>;
+
+        State link = graph->getGoal();
+        path->push_front(link);
+
+        while (fathers.find(link) != fathers.end())
+        {
+            link = fathers[link];
+            path->push_front(link);
+        }
+
+        //                             (visited.size() - 1) to exclude the starting state
+        std::cout << "bfs touched " << (visited.size() - 1) << " states" << std::endl; // todo delete this line
+        return path;
     }
 };
 

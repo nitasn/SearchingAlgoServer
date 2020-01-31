@@ -24,6 +24,9 @@ class algorithmA_star : public Searcher<State>
     std::multimap<double, State> _costs2states; // states that cost that much (sorted from min cost) used as heap
     std::map<State, typename std::multimap<double, State>::iterator> _heap_iters; // for fast deletion
 
+    std::set<State> CLOSED; // states we're done exploring
+    std::map<State, State> fathers;
+
     Searchable<State> *graph;
 
     double heuristic_cost_to_goal(State &s)
@@ -78,14 +81,17 @@ class algorithmA_star : public Searcher<State>
         _heap_iters[s] = iter;
     }
 
-    std::set<State> CLOSED;
-    std::map<State, State> fathers;
-
-
 public:
 
+    // todo this one is effectively constructor... we should change the api so that oa gets searcher by template and not by pointer to interface
     std::list<State> *findPath(Searchable<State> *_graph) override
     {
+        cost_until_here.clear();
+        _costs2states.clear();
+        _heap_iters.clear();
+        CLOSED.clear();
+        fathers.clear();
+
         this->graph = _graph;
 
         State first = graph->getStart();
@@ -104,20 +110,21 @@ public:
                 break;
 
             for (State &neighbor : graph->getNeighbors(current)) if (CLOSED.find(neighbor) == CLOSED.end())
-            {
-                bool in_heap = _heap_iters.find(neighbor) != _heap_iters.end();
-
-                bool found_shorter_way = in_heap &&
-                                         cost_until_here[current] + graph->getWeight(current, neighbor) < cost_until_here[neighbor];
-
-                if (!in_heap || found_shorter_way)
                 {
-                    cost_until_here[neighbor] = cost_until_here[current] + graph->getWeight(current, neighbor);
-                    double heuristic_f = cost_until_here[neighbor] + heuristic_cost_to_goal(neighbor);
-                    fathers[neighbor] = current;
-                    insert_or_update(neighbor, heuristic_f);
+                    bool in_heap = _heap_iters.find(neighbor) != _heap_iters.end();
+
+                    bool found_shorter_way = in_heap && // ladies and gents, the triangle inequality:
+                                             cost_until_here[current] + graph->getWeight(current, neighbor)
+                                             < cost_until_here[neighbor];
+
+                    if (!in_heap || found_shorter_way)
+                    {
+                        cost_until_here[neighbor] = cost_until_here[current] + graph->getWeight(current, neighbor);
+                        double heuristic_f = cost_until_here[neighbor] + heuristic_cost_to_goal(neighbor);
+                        fathers[neighbor] = current;
+                        insert_or_update(neighbor, heuristic_f);
+                    }
                 }
-            }
         }
 
         auto *path = new std::list<State>;

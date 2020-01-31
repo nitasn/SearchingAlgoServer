@@ -24,15 +24,13 @@ int main()
     algorithmA_star<coords> algo;
 
     auto *searcher = dynamic_cast<Searcher<coords> *>(&algo); // down casting
-
-    OA oa(searcher);
-
+    OA oa(searcher); // object adapter from graphs world to server_side world
     auto *solver = dynamic_cast<server_side::Solver<string, string> *>(&oa); // down casting again
-
 
     server_side::ClientHandler clientHandler(solver);
 
     server_side::ParallelServer server(5600, &clientHandler);
 
     sleep_forever();
+    return 0;
 }

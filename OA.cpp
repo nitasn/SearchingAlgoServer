@@ -99,7 +99,7 @@ string path_description(list<coords> *path, matrixSearchable &matrix)
             int di = iter->first - from.first;
             int dj = iter->second - from.second;
 
-            builder << direction_name(di, dj) << ", ";
+            builder << direction_name(di, dj) << " -> ";
 
             totalCost += matrix.getCellCost(*iter);
             builder << "(" << totalCost << ")";

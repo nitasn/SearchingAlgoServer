@@ -20,10 +20,10 @@ namespace server_side
 
         std::string handle_client(std::string &question)
         {
-            if (cache.is_cached(question))
-            {
-                return cache.retrieve(question);
-            }
+//            if (cache.is_cached(question))
+//            {
+//                return cache.retrieve(question); todo re-enable cache
+//            }
 
             std::string answer;
 
@@ -38,7 +38,7 @@ namespace server_side
             }
 
 
-            cache.store(question, answer);
+//            cache.store(question, answer);
 
             return answer;
         }

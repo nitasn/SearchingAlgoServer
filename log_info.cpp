@@ -28,5 +28,5 @@ IgnoreStream nowhere;
 //  + output_to_nowhere
 
 
-//ostream &log_info = nowhere;
-ostream &log_info = cout;
+ostream &log_info = nowhere;
+//ostream &log_info = cout;

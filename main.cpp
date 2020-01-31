@@ -21,13 +21,18 @@ void sleep_forever()
 
 int main()
 {
-    Searcher<coords> *searcher = new algorithmA_star<coords>;
+    algorithmA_star<coords> algo;
 
-    server_side::Solver<string, string> *solver = new OA(searcher);
+    auto *searcher = dynamic_cast<Searcher<coords> *>(&algo); // down casting
+
+    OA oa(searcher);
+
+    auto *solver = dynamic_cast<server_side::Solver<string, string> *>(&oa); // down casting again
+
 
     server_side::ClientHandler clientHandler(solver);
 
-    server_side::ParallelServer server(5400, &clientHandler);
+    server_side::ParallelServer server(5600, &clientHandler);
 
     sleep_forever();
 }

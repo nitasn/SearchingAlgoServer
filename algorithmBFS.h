@@ -18,10 +18,14 @@
  */
 template <typename State>
 class algorithmBFS: public Searcher<State> {
-    std::map<State, State> *mapFather = new std::map<State, State>();
-    std::queue<State> *queueState = new std::queue<State>();
 
-    std::list<State> listState;
+    // todo קורס עבור מטריצות בגודל 1 על 1
+    //  וגם מסלול מקודקוד לעצמו לא אפשרי - הוא הולך לשכן וחוזר משם לעצמו
+
+    std::map<State, State> *mapFather = new std::map<State, State>(); // those two
+    std::queue<State> *queueState = new std::queue<State>();          // don't need "new"
+
+    std::list<State> *listState = new std::list<State>;
 
     Searchable<State> *graph;
 
@@ -46,9 +50,9 @@ public:
         while (!this->queueState->empty()){
                 State state = this->queueState->front();
                 if (state == graph->getGoal()) {
-                    listState.push_back(state);
+                    listState->push_back(state);
                     updateTheWay();
-                    return &listState;
+                    return listState;
                 }
                 inQueueFriend(state);
                 this->queueState->pop();
@@ -59,13 +63,14 @@ public:
     * updateTheWay run on father map from goal until start state,
     * and add the state for list
     */
-    void updateTheWay(){
+    void updateTheWay()
+    {
         State father = (*mapFather)[graph->getGoal()];
         while(father != this->graph->getStart()){
-            listState.push_front(father);
+            listState->push_front(father);
             father = (*mapFather)[father];
         }
-        listState.push_front(this->graph->getStart());
+        listState->push_front(this->graph->getStart());
     }
 
     /**

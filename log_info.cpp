@@ -2,13 +2,10 @@
 // Created by Nitsan BenHanoch on 29/01/2020.
 //
 #include <iostream>
+#include "log_info.h"
+
 
 using namespace std;
-
-//class WhereverStream : public ostream
-//{
-//    ostream *_stream;
-//};
 
 class IgnoreStream : public ostream
 {
@@ -25,7 +22,6 @@ const IgnoreStream &operator<<(IgnoreStream &&os, const T &value)
 }
 
 IgnoreStream nowhere;
-
 
 // todo make log_info an object that inherit ostream and contains the methods:
 //  + output_to_cout

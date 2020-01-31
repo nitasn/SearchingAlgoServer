@@ -34,13 +34,13 @@ vector<string> splitToLines(string &problem)
 {
     string ENDING = "\r\n";
     vector<string> results;
-    size_t last = 0, next, NOT_FOUND = -1;
+    size_t last = 0, next;
 
     while (last < problem.size())
     {
         next = problem.find(ENDING, last);
 
-        if (next == NOT_FOUND)
+        if (next == string::npos) // not found
         {
             next = problem.size();
         }
@@ -88,7 +88,7 @@ string path_description(list<coords> *path, matrixSearchable &matrix)
         auto iter = path->begin();
         double totalCost = matrix.getCellCost(*iter);
 
-        builder << "(" << totalCost << ") ";
+        builder << "(" << totalCost << ")";
 
         while (true)
         {
@@ -99,13 +99,13 @@ string path_description(list<coords> *path, matrixSearchable &matrix)
             int di = iter->first - from.first;
             int dj = iter->second - from.second;
 
-            builder << direction_name(di, dj) << " ->";
+            builder << direction_name(di, dj) << ", ";
 
             totalCost += matrix.getCellCost(*iter);
-            builder << " (" << totalCost << ") ";
+            builder << "(" << totalCost << ")";
         }
 
-        builder << "at goal";
+        builder << "at_goal";
     }
 
     builder << "\r\n";
@@ -123,17 +123,9 @@ string OA::getSolution(string &problem)
 
     list<coords> *path = searcher->findPath(graph);
 
-//    if (path == nullptr)
-//    {
-//        cout << "path is null" << endl;
-//    }
-//    else {
-//        for (auto ij : *path) {
-//            cout << "(" << ij.first << ", " << ij.second << ") ";
-//        }
-//        cout << endl;
-//    }
-//    return "\r\n";
+    string result = path_description(path, matrix);
 
-    return path_description(path, matrix);
+    delete path;
+
+    return result;
 }

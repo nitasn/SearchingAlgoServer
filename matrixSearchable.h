@@ -21,7 +21,7 @@ class matrixSearchable : public Searchable<coords>
     int numColumns = 0;
     coords start;
     coords goal;
-    double minWeight;
+    double minWeight{};
 
     void createTheMatrix(std::vector<std::string> &stringVector);
 

@@ -74,7 +74,6 @@ public:
         if (graph->getStart() != graph->getGoal()) // magnificent plaster
             listState->push_front(this->graph->getStart());
 
-        std::cout << "best_fs touched " << mapFather.size() << " states" << std::endl; // todo delete this line
         return listState;
     }
 };

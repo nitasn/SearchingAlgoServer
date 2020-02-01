@@ -68,8 +68,6 @@ public:
             path->push_front(link);
         }
 
-        //                             (visited.size() - 1) to exclude the starting state
-        std::cout << "bfs touched " << (visited.size() - 1) << " states" << std::endl; // todo delete this line
         return path;
     }
 };

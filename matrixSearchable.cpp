@@ -104,9 +104,9 @@ coords matrixSearchable::getGoal(){
 std::list<coords> matrixSearchable::getNeighbors(coords ij){
     std::list<coords> listNeighbors;
 
-    if ((ij.first != 0) && !thisIsBlock(ij.first - 1, ij.second)){
-        coords up = {(ij.first - 1), (ij.second)};
-        listNeighbors.push_back(up);
+    if ((ij.second != (this->numColumns -1)) && !thisIsBlock(ij.first, ij.second + 1)){
+        coords right = {(ij.first), (ij.second + 1)};
+        listNeighbors.push_back(right);
     }
     if ((ij.first != (this->numRows -1)) && !thisIsBlock(ij.first + 1, ij.second)){
         coords down = {(ij.first + 1), (ij.second)};
@@ -116,9 +116,9 @@ std::list<coords> matrixSearchable::getNeighbors(coords ij){
         coords left = {(ij.first), (ij.second - 1)};
         listNeighbors.push_back(left);
     }
-    if ((ij.second != (this->numColumns -1)) && !thisIsBlock(ij.first, ij.second + 1)){
-        coords right = {(ij.first), (ij.second + 1)};
-        listNeighbors.push_back(right);
+    if ((ij.first != 0) && !thisIsBlock(ij.first - 1, ij.second)){
+        coords up = {(ij.first - 1), (ij.second)};
+        listNeighbors.push_back(up);
     }
     return listNeighbors;
 }

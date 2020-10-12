@@ -19,7 +19,7 @@ The format for a request is:
 2. source cell.
 3. target cell.
 4. literally the word 'end'.
-5. 
+
 and of course, here's an example of a run:
 ```bash
 ./paths_server&  # run server

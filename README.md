@@ -1,6 +1,8 @@
 # SearchingAlgoServer
 
-A Multi-Threaded Server that uses Disk Cache, and implements some Graph Searching Algorithms. It can accept graphs, and respond with best-routes.
+A Multi-Threaded Server that implements some Graph Searching Algorithms (such as BestFs, A* and more). It can accept graphs in matrix-representation, and respond with best-routes.
+
+To save up on some future calculations, the server stores queries it has responded to in the file system. each file's name is a printable-hash of the query, and its content is the result the server has yielded.
 
 
 ## Installation

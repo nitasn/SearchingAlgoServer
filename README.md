@@ -1,13 +1,7 @@
 # SearchingAlgoServer
 
-A Parallel Server, File Cache Manager, and some Graph Searching Algorithms,
-Combined into a kicking-a$$ server that yields best paths in a given matrix .
+A Multi-Threaded Server that uses Disk Cache, and implements some Graph Searching Algorithms. It can accept graphs, and respond with best-routes.
 
-
-
-It's a second-year CS project, by Nitsan and Hodaya, students at Bar-Ilan University.
-
-[Link to GitHub](https://github.com/nitasn/SearchingAlgoServer)
 
 ## Installation
 
@@ -17,13 +11,17 @@ g++ -std=c++14 *.cpp -o paths_server -pthread
 ```
 ## Usage
 
-Run the Server, and ask a question via telnet.
-Questions are composed of a Matrix (in which each cell has the cost of visiting it, or -1 for a "wall"), 
-Followed by Coordinates of where to Start and where to End,
-Then the word "end".
+Run our server from the command-line, and telnet into it.
+The format for a request is:
+1. matrix (in which each cell holds the cost of visiting it, or -1 if it's unvisitable), 
+2. source cell.
+3. target cell.
+4. literally the word 'end'.
+5. 
+and of course, here's an example of a run:
 ```bash
 ./paths_server&  # run server
-telnet localhost 5400  # connect using telnet
+telnet localhost 5600  # connect using telnet
 
  1,  9,  2,  1
 -1,  3,  8,  2
@@ -34,6 +32,6 @@ telnet localhost 5400  # connect using telnet
 1, 3
 end
 
-# yields:
-# (7) right -> (27) up -> (30) right -> (38) right -> (40) at goal
+# server responds with (min route and its accumulating cost):
+(7) right -> (27) up -> (30) right -> (38) right -> (40) at goal
 ```
